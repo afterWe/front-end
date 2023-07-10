@@ -47,7 +47,7 @@
 
  [김민경](https://github.com/minngaeng) | [김준영](https://github.com/zunyange)  |  [권유정](https://github.com/YoojeongKwon)  | [이기태](https://github.com/thenutcrackers2) | [이솜이](https://github.com/somyiLee) |  [유정인](https://github.com/jaylenyu) | 
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| <a href="https://github.com/minngaeng"><img src="https://github.com/minngaeng.png" width="100"></a> | <a href="https://github.com/zunyange"><img src="https://github.com/zunyange.png" width="100"></a> | <a href="https://github.com/YoojeongKwon"><img src="https://github.com/YoojeongKwon.png" width="100"></a> | <a href="https://github.com/thenutcrackers2"><img src="https://github.com/thenutcrackers2.png" width="100"></a> | <a href="https://github.com/Chang9601"><img src="https://github.com/Chang9601.png" width="100"></a> | <a href="https://github.com/jaylenyu"><img src="https://github.com/jaylenyu.png" width="100"></a> |
+| <a href="https://github.com/minngaeng"><img src="https://github.com/minngaeng.png" width="100"></a> | <a href="https://github.com/zunyange"><img src="https://github.com/zunyange.png" width="100"></a> | <a href="https://github.com/YoojeongKwon"><img src="https://github.com/YoojeongKwon.png" width="100"></a> | <a href="https://github.com/thenutcrackers2"><img src="https://github.com/thenutcrackers2.png" width="100"></a> | <a href="https://github.com/somyiLee"><img src="https://github.com/somyiLee.png" width="100"></a> | <a href="https://github.com/jaylenyu"><img src="https://github.com/jaylenyu.png" width="100"></a> |
 
 <br />
 
