@@ -1,6 +1,11 @@
 # ❶ Runbase : Step Up, Run Strong
 
 <br />
+<br />
+
+![image](https://github.com/afterWe/Run_Base_front-end/assets/124610396/5a6b77b7-cbd4-4922-928f-c427e0193954)
+
+<br />
 
 ### 🧐 What is mean "Runbase"?
 > "Runbase"는 러닝에 최적화된 신발과 의류, 잡화 등을 판매하는 브랜드 입니다. <br />
