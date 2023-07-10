@@ -1,9 +1,16 @@
+<br />
+
+
+<div align="center">
+ <image src="https://github.com/afterWe/Run_Base_front-end/assets/122191856/36c72085-3693-4164-b74d-627296b01bc9" width="400px" />
+</div>
+  
+<br />
+<br />
+<br />
+
+
 # ❶ Runbase : Step Up, Run Strong
-
-<br />
-<br />
-
-![image](https://github.com/afterWe/Run_Base_front-end/assets/124610396/5a6b77b7-cbd4-4922-928f-c427e0193954)
 
 <br />
 
