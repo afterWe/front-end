@@ -1,4 +1,4 @@
-# ❶ RunBase : Step Up, Run Strong
+# ❶ Runbase : Step Up, Run Strong
 
 <br />
 
