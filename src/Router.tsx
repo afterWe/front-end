@@ -5,7 +5,7 @@ import Cart from './pages/Cart/Cart';
 import Login from './pages/Login/Login';
 import MyPage from './pages/MyPage/MyPage';
 import OrderInfo from './pages/OrderInfo/OrderInfo';
-import Payment from './pages/Payment/Payment';
+import Paid from './pages/Paid/Paid';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
 import SignIn from './pages/SignIn/SignIn';
@@ -21,7 +21,13 @@ const Router = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/myPage" element={<MyPage />} />
           <Route path="/order-info" element={<OrderInfo />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route
+            path="/paid"
+            element={
+              <Paid titleText="결제가 완료 되었습니다." showButton={true} />
+            }
+          />
+
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-list" element={<ProductList />} />
           <Route path="/address-edit" element={<AddressEdit />} />

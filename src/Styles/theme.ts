@@ -9,5 +9,6 @@ export const theme = {
   darkGray: `${Colors.gray600}`,
   flexBox: (justify: string) =>
     `display: flex;
+    
   justify-content: ${justify};`
 };
