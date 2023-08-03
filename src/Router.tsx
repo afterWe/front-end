@@ -10,6 +10,7 @@ import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
 import SignIn from './pages/SignIn/SignIn';
 import AppLayout from './layout/AppLayout';
+import AddressList from './layout/component/AddressList';
 
 const Router = () => {
   return (
@@ -23,6 +24,7 @@ const Router = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-list" element={<ProductList />} />
+          <Route path="/address-list" element={<AddressList />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/sign-in" element={<SignIn />} />
