@@ -1,23 +1,36 @@
 import React, { FC } from 'react';
-import { Input, Button, TextButton, Icon } from '@class101/ui';
+import { Colors, ButtonSize } from '@class101/ui';
 import * as S from './Login.style';
 
 const Login: FC = () => {
   return (
     <S.Login>
-      <S.InputContainer>
-        <Input size="md" fill placeholder="아이디" />
+      <S.MainLogo>
+        <img src="/images/runbase_logo3.png" alt="런베이스 로고" />
+      </S.MainLogo>
+      <S.LoginContainer>
+        <S.StyledInput
+          fill
+          placeholder="아이디(이메일)"
+          //errorMessage="아이디를 입력해주세요."
+        />
         <S.InputPasswordWrap>
-          <S.IconGroup>
-            <Icon.Eye size={18} />
-          </S.IconGroup>
-          <Input size="md" fill placeholder="비밀번호" />
+          <S.StyledInput
+            fill
+            placeholder="비밀번호"
+            //errorMessage="비밀번호를 입력해주세요."
+          />
+          <S.StyledEye fillColor={Colors.gray400} />
         </S.InputPasswordWrap>
-      </S.InputContainer>
-      <S.ButtonContainer>
-        <Button fill>로그인</Button>
-        <TextButton to="/sign-in">회원가입 바로가기</TextButton>
-      </S.ButtonContainer>
+        <S.StyledButton fill size={ButtonSize.LARGE} margin="2rem">
+          로그인
+        </S.StyledButton>
+        <S.TextButtonBox>
+          <S.StyledTextButton margin="1rem" to="/sign-in">
+            회원가입 바로가기
+          </S.StyledTextButton>
+        </S.TextButtonBox>
+      </S.LoginContainer>
     </S.Login>
   );
 };
