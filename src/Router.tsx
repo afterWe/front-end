@@ -10,8 +10,8 @@ import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
 import SignIn from './pages/SignIn/SignIn';
 import AppLayout from './layout/AppLayout';
-import AddressEdit from './layout/component/AddressEdit';
 import AddressList from './components/AddressList';
+import AddressEdit from './components/AddressEdit';
 
 const Router = () => {
   return (
