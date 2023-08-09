@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "유정인",
+    "addressDetail": "서울 용산구 한강대로 21"
+  },
+  {
+    "id": 2,
+    "name": "이현아",
+    "addressDetail": "서울 강남구 서초대로 388"
+  },
+  {
+    "id": 3,
+    "name": "김상중",
+    "addressDetail": "경기도 성남시 분당구 정자동 38"
+  },
+  {
+    "id": 4,
+    "name": "김수영",
+    "addressDetail": "서울 강남구 테헤란로 427"
+  },
+  {
+    "id": 5,
+    "name": "김민재",
+    "addressDetail": "뮌헨 스테디움 락커 2"
+  }
+]

@@ -10,9 +10,8 @@ import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
 import SignIn from './pages/SignIn/SignIn';
 import AppLayout from './layout/AppLayout';
-import AddressList from './components/Address/AddressList';
-import AddressEdit from './components/Address/AddressEdit';
 import Payment from './pages/Payment/Payment';
+import AddressEdit from './components/Address/AddressEdit';
 
 const Router = () => {
   return (
@@ -27,7 +26,6 @@ const Router = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-list" element={<ProductList />} />
-          <Route path="/address-list" element={<AddressList />} />
           <Route path="/address-edit" element={<AddressEdit />} />
         </Route>
         <Route path="/login" element={<Login />} />

@@ -1,64 +1,58 @@
-import React, { FC } from 'react';
-import { Divider, TextButton, Icon } from '@class101/ui';
+import React, { FC, useEffect, useState } from 'react';
+import { RadioButtonGroup, AddIcon, Body1, Body2 } from '@class101/ui';
 import * as S from './AddressList.style';
 
+interface Address {
+  id: number;
+  name: string;
+  addressDetail: string;
+}
+
 const AddressList: FC = () => {
-  const handleAddressSelect = () => {
-    console.log('이거?');
-  };
+  const [addressData, setAddressData] = useState<Address[]>([]);
+
+  useEffect(() => {
+    fetch('./data/addressList.json')
+      .then(res => res.json())
+      .then(data => {
+        setAddressData(data);
+      });
+  }, []);
+
+  const handleAddressSelect = () => {};
 
   return (
     <S.AddressList>
-      <S.HeadContainer>
-        <S.HeadTitle>배송지목록</S.HeadTitle>
-        <Divider color="black" />
-        <S.HeadTitleEditBox>
-          <TextButton>
-            <Icon.Add fillColor="gray" size={16} />
-            배송지추가
-          </TextButton>
-        </S.HeadTitleEditBox>
-      </S.HeadContainer>
-      <S.AddressInfoContainer>
-        {ADDRESSINFO.map(({ name, addressDetail }, key) => (
-          <S.StyledRadioButtonGroup
-            key={key}
-            value="test"
-            stackingDirection="horizontal"
-            showBorder={false}
-            showDivider
-            onChange={handleAddressSelect}
-          >
-            <S.StyledRadioButton value={name}>{name}</S.StyledRadioButton>
-            <S.AddressInfoDetail />
-            <S.TextButtonBox>
-              <TextButton>수정</TextButton>
-              <TextButton>삭제</TextButton>
-            </S.TextButtonBox>
-          </S.StyledRadioButtonGroup>
-        ))}
-      </S.AddressInfoContainer>
+      <S.AddressAddBox>
+        <S.StyledTextButton leftIcon={<AddIcon />}>
+          배송지추가
+        </S.StyledTextButton>
+      </S.AddressAddBox>
+      <S.AddressListContainer>
+        <RadioButtonGroup
+          stackingDirection="vertical"
+          showBorder={false}
+          showDivider={false}
+          onChange={handleAddressSelect}
+        >
+          {addressData.map(({ id, name, addressDetail }) => (
+            <S.StyledRadioButton key={id} value={name}>
+              <S.StyledRadioButtonBox>
+                <div>
+                  <Body1>{name}</Body1>
+                  <Body2 color="gray">{addressDetail}</Body2>
+                </div>
+                <div>
+                  <S.StyledTextButton>수정</S.StyledTextButton>
+                  <S.StyledTextButton>삭제</S.StyledTextButton>
+                </div>
+              </S.StyledRadioButtonBox>
+            </S.StyledRadioButton>
+          ))}
+        </RadioButtonGroup>
+      </S.AddressListContainer>
     </S.AddressList>
   );
 };
 
 export default AddressList;
-
-const ADDRESSINFO = [
-  {
-    name: '유정인',
-    addressDetail: '서울 용산구 한강대로 21'
-  },
-  {
-    name: '이현아',
-    addressDetail: '서울 강남구 서초대로 388'
-  },
-  {
-    name: '김상중',
-    addressDetail: '경기도 성남시 분당구 정자동 38'
-  },
-  {
-    name: '김민영',
-    addressDetail: '서울 강남구 테헤란로 427'
-  }
-];
