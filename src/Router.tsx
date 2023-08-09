@@ -11,6 +11,7 @@ import ProductList from './pages/ProductList/ProductList';
 import SignIn from './pages/SignIn/SignIn';
 import AppLayout from './layout/AppLayout';
 import AddressEdit from './layout/component/AddressEdit';
+import AddressList from './components/AddressList';
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-list" element={<ProductList />} />
+          <Route path="/address-list" element={<AddressList />} />
           <Route path="/address-edit" element={<AddressEdit />} />
         </Route>
         <Route path="/login" element={<Login />} />

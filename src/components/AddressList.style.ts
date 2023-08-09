@@ -1,62 +1,56 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
+import { RadioButtonGroup, RadioButton } from '@class101/ui';
 
 export const AddressList = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
+  margin: 0 auto;
+  width: 30rem;
+  margin-top: 10rem;
 `;
 
 export const HeadContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
 `;
 
 export const HeadTitle = styled.h1`
   display: flex;
   justify-content: center;
-  font-weight: 400;
-  padding: 10px;
+  font-size: 2rem;
+  padding: 1rem;
 `;
 
 export const HeadTitleEditBox = styled.div`
   display: flex;
   justify-content: right;
-  padding: 10px;
+  padding: 1rem;
 `;
 
 export const AddressInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: inherit;
+  margin: 0 auto;
 `;
 
-export const AddressInfoWrap = styled.div`
+export const StyledRadioButtonGroup = styled(RadioButtonGroup)`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-  padding: 10px;
+  width: inherit;
 `;
 
-export const AddressInfoGroup = styled.div`
-  display: flex;
-  align-items: flex-start;
-`;
+export const StyledRadioButton = styled(RadioButton)``;
+export const AddressInfoGroup = styled.div``;
 
 export const AddressInfoBox = styled.div`
-  margin-left: 10px;
+  margin-left: 1rem;
 `;
 
-export const AddressInfoUserName = styled.div``;
-
-export const AddressInfoDetail = styled.div`
-  opacity: 0.5;
-  font-size: 14px;
+export const AddressInfoUserName = styled.div`
+  font-size: 1rem;
 `;
 
-export const AddressEditGroup = styled.div`
+export const AddressInfoDetail = styled.p`
+  color: ${({ theme }) => theme.darkGray};
+  font-size: 0.8rem;
+`;
+
+export const TextButtonBox = styled.div`
   display: flex;
-  justify-content: space-around;
-  width: 10%;
+  justify-self: right;
 `;
