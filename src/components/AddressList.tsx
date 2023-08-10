@@ -3,6 +3,10 @@ import { Divider, TextButton, Icon } from '@class101/ui';
 import * as S from './AddressList.style';
 
 const AddressList: FC = () => {
+  const handleAddressSelect = () => {
+    console.log('이거?');
+  };
+
   return (
     <S.AddressList>
       <S.HeadContainer>
@@ -17,19 +21,21 @@ const AddressList: FC = () => {
       </S.HeadContainer>
       <S.AddressInfoContainer>
         {ADDRESSINFO.map(({ name, addressDetail }, key) => (
-          <S.AddressInfoWrap key={key}>
-            <S.AddressInfoGroup>
-              <input name="test" type="radio" value="33" />
-              <S.AddressInfoBox>
-                <S.AddressInfoUserName>{name}</S.AddressInfoUserName>
-                <S.AddressInfoDetail>{addressDetail}</S.AddressInfoDetail>
-              </S.AddressInfoBox>
-            </S.AddressInfoGroup>
-            <S.AddressEditGroup>
+          <S.StyledRadioButtonGroup
+            key={key}
+            value="test"
+            stackingDirection="horizontal"
+            showBorder={false}
+            showDivider
+            onChange={handleAddressSelect}
+          >
+            <S.StyledRadioButton value={name}>{name}</S.StyledRadioButton>
+            <S.AddressInfoDetail />
+            <S.TextButtonBox>
               <TextButton>수정</TextButton>
               <TextButton>삭제</TextButton>
-            </S.AddressEditGroup>
-          </S.AddressInfoWrap>
+            </S.TextButtonBox>
+          </S.StyledRadioButtonGroup>
         ))}
       </S.AddressInfoContainer>
     </S.AddressList>
