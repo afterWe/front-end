@@ -4,7 +4,8 @@ import {
   Colors,
   Button,
   RadioButtonGroup,
-  RadioButton
+  RadioButton,
+  ControlGroup
 } from '@class101/ui';
 
 export const PersonalInfo = styled.div`
@@ -58,8 +59,20 @@ export const ButtonBox = styled.div`
   padding-top: 2rem;
 `;
 
-export const StyledButton = styled(Button)`
+export const SaveButton = styled(Button)`
   width: 5rem;
+  &:hover {
+    background: ${Colors.gray400};
+    border-color: ${Colors.gray400};
+  }
+`;
+
+export const CancelButton = styled(Button)`
+  width: 5rem;
+  &:hover {
+    background: ${Colors.gray400};
+    border-color: ${Colors.gray400};
+  }
 `;
 
 export const ShippingAdderssBox = styled.div`
@@ -83,3 +96,29 @@ export const AddAddress = styled.div`
 export const ShippingAddressList = styled.div``;
 export const StyledRadioButtonGroup = styled(RadioButtonGroup)``;
 export const StyledRadioButton = styled(RadioButton)``;
+
+export const AddressEditContainer = styled.div`
+  width: 80%;
+  margin: 1.5rem auto;
+`;
+
+export const EditTitle = styled.div`
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1.5rem;
+  font-size: 1.2rem;
+`;
+
+export const EditBox = styled.div`
+  padding: 1rem 0;
+`;
+
+export const StyledControlGroup = styled(ControlGroup)`
+  align-items: center;
+`;
+
+export const StyledButton = styled(Button)`
+  margin: 0.5rem 5rem 0 5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+`;
