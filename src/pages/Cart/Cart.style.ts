@@ -1,8 +1,12 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
+import { Colors } from '@class101/ui';
 
 export const Cart = styled.div`
   display: flex;
-  width: 100%;
+  width: 90%;
+  margin-top: 10rem;
+  margin: 0 auto;
+  padding: 2rem;
 `;
 
 export const CartListContainer = styled.div`
@@ -11,30 +15,38 @@ export const CartListContainer = styled.div`
 `;
 
 export const FreeShipServiceWrap = styled.div`
-  border: 1px solid 0.5;
-  padding: 1rem;
+  border: 1px solid black;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
 `;
 
-export const FreeShipServiceTitle = styled.div``;
+export const FreeShipServiceTitle = styled.h2`
+  //h2 fontsize가 안바뀜
+  font-size: 1.2rem;
+  color: ${Colors.orange500};
+`;
 
-export const FreeShipServiceContent = styled.div``;
+export const FreeShipServiceContent = styled.p`
+  font-size: 0.8rem;
+`;
 
 export const ReturnAndRefundWrap = styled.div`
   border: 1px solid black;
-  padding: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
 `;
-export const ReturnAndRefundTitle = styled.div``;
 
-export const ReturnAndRefundContent = styled.div``;
+export const ReturnAndRefundTitle = styled.h3``;
+
+export const ReturnAndRefundContent = styled.div`
+  font-size: 0.8rem;
+`;
 
 export const CartListWrap = styled.div`
   border: 1px solid black;
 `;
 
-export const CartListTitle = styled.h1`
-  font-weight: 500;
-  padding: 1rem;
-`;
+export const CartListTitle = styled.h1``;
 
 export const CartListGroup = styled.div`
   display: flex;

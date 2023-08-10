@@ -7,13 +7,18 @@ const Cart: FC = () => {
     <S.Cart>
       <S.CartListContainer>
         <S.FreeShipServiceWrap>
-          <S.FreeShipServiceTitle>무료배송서비스</S.FreeShipServiceTitle>
+          <S.FreeShipServiceTitle>
+            멤버에게 제공되는 무료 배송 서비스
+          </S.FreeShipServiceTitle>
           <S.FreeShipServiceContent>
-            배송서비스를 즐겨봐
+            나이키 멤버가 되어 무료배송 서비스를 비롯한 다양한 혜택을
+            누려보세요. 가입하기 또는 로그인
           </S.FreeShipServiceContent>
         </S.FreeShipServiceWrap>
         <S.ReturnAndRefundWrap>
-          <S.ReturnAndRefundTitle>반품 및 환불안내</S.ReturnAndRefundTitle>
+          <S.ReturnAndRefundTitle>
+            반품 및 환불 지연 안내
+          </S.ReturnAndRefundTitle>
           <S.ReturnAndRefundContent>자세히보기</S.ReturnAndRefundContent>
         </S.ReturnAndRefundWrap>
         <S.CartListWrap>
@@ -43,16 +48,13 @@ const Cart: FC = () => {
       <S.OrderListContainer>
         <S.OrderListTitle>주문 내역</S.OrderListTitle>
         <S.ProductPriceBox>
-          <span>상품금액</span>
-          <span>data</span>
+          <span>상품금액 : data</span>
         </S.ProductPriceBox>
         <S.ShippingFee>
-          <span>배송비</span>
-          <span>0원</span>
+          <span>배송비 : 0원</span>
         </S.ShippingFee>
         <S.TotalPrice>
-          <span>총 결제 금액</span>
-          <span>data</span>
+          <span>총 결제 금액 : data</span>
         </S.TotalPrice>
         <Button>결제 하기</Button>
       </S.OrderListContainer>
