@@ -1,28 +1,9 @@
-import { Colors, Button } from '@class101/ui';
+import { Colors } from '@class101/ui';
 import { styled } from 'styled-components';
-import { PageContainer } from '../../Styles/common.style';
 
-export const Paid = styled(PageContainer)`
-  box-sizing: border-box;
-  ${props => props.theme.flexBox('', '', 'column')}
-`;
-
-export const TitleContainer = styled.div`
-  ${({ theme }) => theme.flexBox('', 'center', 'column')}
-`;
-
-export const Title = styled.h2`
-  font-weight: 500;
-  font-size: 25px;
-`;
-
-export const BorderLine = styled.div`
-  border-top: 1px solid gray;
-  margin: 2.5rem 0;
-`;
-
-export const OrderProduct = styled.div`
+export const OrderProduct = styled.p`
   padding: 0.8rem 0;
+  font-size: 18px;
 `;
 
 export const OrderWrap = styled.div`
@@ -43,8 +24,8 @@ export const ImageDetailBox = styled.div`
 
 export const Image = styled.div`
   width: 10rem;
-  display: flex;
   ${({ theme }) => theme.flexBox('center', 'center', '')}
+
   img {
     width: 100%;
   }
@@ -73,21 +54,4 @@ export const ProductDeltail = styled.li`
 
 export const Price = styled.p`
   padding-right: 3.5rem;
-`;
-
-export const ButtonGroup = styled.div`
-  ${({ theme }) => theme.flexBox('space-between', '', '')}
-`;
-
-export const OnClickButton = styled(Button)`
-  width: 40%;
-  height: 5rem;
-  margin-top: 8rem;
-  background: ${Colors.gray300};
-  font-weight: 500;
-  font-size: 14px;
-
-  &:hover {
-    background: ${Colors.gray500};
-  }
 `;
