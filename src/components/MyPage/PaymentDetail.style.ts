@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import { Button } from '@class101/ui';
+import { Button, Pagination } from '@class101/ui';
 
 export const PaymentDetail = styled.div`
   margin: 0 auto;
-  width: 1200px;
-  height: 600px;
-  border-top: 1px solid;
-  margin-top: 80px;
+  width: 100%;
+  height: 37rem;
 `;
 
 export const Group = styled.div`
@@ -18,8 +16,8 @@ export const Group = styled.div`
 export const PaymentTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 800px;
-  padding: 40px 0;
+  width: 100%;
+  padding: 2.5rem 0;
 `;
 
 export const Title = styled.div``;
@@ -28,35 +26,44 @@ export const Detail = styled.div``;
 
 export const PaymentBox = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 export const PaymentTable = styled.table`
-  width: 800px;
+  width: 100%;
+
   thead {
     background-color: #ccc;
   }
   tbody {
   }
   th {
-    height: 50px;
+    vertical-align: middle;
+    height: 3rem;
   }
   tr {
   }
   td {
-    height: 60px;
+    vertical-align: middle;
+    height: 3.8rem;
     text-align: center;
     border-bottom: 1px solid #ccc;
   }
 `;
 
 export const DetailButton = styled(Button)`
-  width: 120px;
-  height: 30px;
+  width: 7rem;
+  height: 2rem;
 `;
 
-export const Pagination = styled.div`
+export const PaginationWrapper = styled.div`
   display: flex;
-  justify-content: right;
-  width: 800px;
-  padding: 20px 0;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 1.2rem 0;
+`;
+
+export const StyledPagination = styled(Pagination)`
+  margin-left: auto;
+  padding-top: 1rem;
 `;
