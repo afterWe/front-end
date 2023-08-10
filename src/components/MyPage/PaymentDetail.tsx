@@ -9,6 +9,7 @@ interface OrderItem {
 
 const PaymentDetail: FC = () => {
   const [data, setData] = useState<OrderItem[]>([]);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
   useEffect(() => {
     fetch('./data/payment.json')
@@ -29,6 +30,11 @@ const PaymentDetail: FC = () => {
         </S.PaymentTitle>
         <S.PaymentBox>
           <S.PaymentTable>
+            <colgroup>
+              <col width="35%" />
+              <col width="40%" />
+              <col width="*" />
+            </colgroup>
             <thead>
               <tr>
                 {orderData.header.map(item => {
@@ -51,7 +57,11 @@ const PaymentDetail: FC = () => {
             </tbody>
           </S.PaymentTable>
         </S.PaymentBox>
-        <S.Pagination>1 2 3 4 5 ... 10</S.Pagination>
+        <S.StyledPagination
+          currentPageIndex={currentPageIndex}
+          totalPageIndex={8}
+          onChange={(number: number) => setCurrentPageIndex(number)}
+        />
       </S.Group>
     </S.PaymentDetail>
   );
