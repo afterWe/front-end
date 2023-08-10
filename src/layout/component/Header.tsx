@@ -1,3 +1,4 @@
+import { Colors, PersonIcon } from '@class101/ui';
 import React, { FC } from 'react';
 import * as S from './style/Header.style';
 
@@ -5,14 +6,16 @@ const Header: FC = () => {
   return (
     <S.HeaderContainer>
       <S.MainLogo>
-        <img src="/images/runbase_logo3.png" alt="런베이스 로고" />
+        <S.StyledBtn>
+          <img src="/images/runbase_logo3.png" alt="런베이스 로고" />
+        </S.StyledBtn>
       </S.MainLogo>
       <S.Nav>
         <S.NavList>
           {NAV_LIST.map(list => {
             return (
               <li key={list.id}>
-                <S.StyledBtn>{list.name}</S.StyledBtn>
+                <S.StyledBtn color={Colors.blue700}>{list.name}</S.StyledBtn>
               </li>
             );
           })}
@@ -22,7 +25,7 @@ const Header: FC = () => {
         {MENU_LIST.map(list => {
           return (
             <li key={list.id}>
-              <S.StyledBtn>{list.name}</S.StyledBtn>
+              <S.StyledBtn color={Colors.blue700}>{list.name}</S.StyledBtn>
             </li>
           );
         })}

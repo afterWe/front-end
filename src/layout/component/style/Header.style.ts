@@ -4,11 +4,13 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
+  height: 90px;
+  margin-bottom: 50px;
   padding: 0 40px;
   box-sizing: border-box;
   background: #fff;
@@ -19,6 +21,7 @@ export const HeaderContainer = styled.header`
 
 export const MainLogo = styled.h1`
   width: 13%;
+  cursor: pointer;
 
   img {
     width: 100%;
@@ -34,35 +37,28 @@ export const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  list-style: none;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 1px;
-
-  :last-child {
-    margin-right: 0px;
-  }
 `;
 
 export const MenuList = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 20%;
-  list-style: none;
   font-size: 14px;
-
-  :last-child {
-    margin-right: 0px;
-  }
+  width: auto;
 `;
 
 export const StyledBtn = styled.button`
   background: none;
-  margin: 0;
-  padding: 0;
   border: none;
   font-size: 1em;
+  transition: color 0.3s;
   cursor: pointer;
+
+  &:hover {
+    color: ${props => props.color};
+    font-weight: ;
+  }
 `;

@@ -13,16 +13,16 @@ export const FooterNavList = styled.ul`
   justify-content: center;
   gap: 30px;
   padding: 0;
-  list-style: none;
-
-  li:hover {
-    color: red;
-  }
 `;
 
 export const FooterContentWrap = styled.div`
   text-align: center;
   margin-top: 40px;
+
+  div,
+  dl {
+    line-height: 2;
+  }
 `;
 
 export const InfoBox = styled.div`
@@ -30,8 +30,6 @@ export const InfoBox = styled.div`
 `;
 
 export const InfoList = styled.dl`
-  list-style: none;
-
   dt {
     display: inline-block;
     font-size: 14px;
