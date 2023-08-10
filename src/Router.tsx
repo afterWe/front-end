@@ -22,12 +22,7 @@ const Router = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/myPage" element={<MyPage />} />
           <Route path="/order-info" element={<OrderInfo />} />
-          <Route
-            path="/paid"
-            element={
-              <Paid titleText="결제가 완료 되었습니다." showButton={true} />
-            }
-          />
+          <Route path="/paid" element={<Paid />} />
 
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-list" element={<ProductList />} />
