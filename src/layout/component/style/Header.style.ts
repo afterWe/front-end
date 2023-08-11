@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
 export const HeaderContainer = styled.header`
+  /* 여기를 참고해주세요! */
   ${({ theme }) => theme.flexBox('space-between', 'center')};
   ${({ theme }) => theme.positionBox('sticky', '0', '0', undefined, '0')};
   width: 100%;
