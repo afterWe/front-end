@@ -1,13 +1,8 @@
 import { styled } from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
+  ${({ theme }) => theme.flexBox('space-between', 'center')};
+  ${({ theme }) => theme.positionBox('sticky', '0', '0', undefined, '0')};
   width: 100%;
   height: 90px;
   margin-bottom: 50px;
@@ -34,18 +29,14 @@ export const Nav = styled.nav`
 `;
 
 export const NavList = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${({ theme }) => theme.flexBox('space-between', 'center')};
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 1px;
 `;
 
 export const MenuList = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${({ theme }) => theme.flexBox('space-between', 'center')};
   font-size: 14px;
   width: auto;
 `;
