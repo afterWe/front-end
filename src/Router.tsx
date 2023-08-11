@@ -12,6 +12,7 @@ import SignIn from './pages/SignIn/SignIn';
 import AppLayout from './layout/AppLayout';
 import AddressList from './components/Address/AddressList';
 import AddressEdit from './components/Address/AddressEdit';
+import Payment from './pages/Payment/Payment';
 
 const Router = () => {
   return (
@@ -23,7 +24,7 @@ const Router = () => {
           <Route path="/myPage" element={<MyPage />} />
           <Route path="/order-info" element={<OrderInfo />} />
           <Route path="/paid" element={<Paid />} />
-
+          <Route path="/payment" element={<Payment />} />
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-list" element={<ProductList />} />
           <Route path="/address-list" element={<AddressList />} />

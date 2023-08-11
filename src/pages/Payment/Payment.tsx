@@ -1,9 +1,9 @@
 import { Button, ButtonSize, Divider, Input } from '@class101/ui';
 import * as S from './Payment.style';
 
-export default function Payment1() {
+export default function Payment() {
   return (
-    <S.Payment1>
+    <S.Payment>
       <S.TitleWrap>
         <S.Title>결제하기</S.Title>
       </S.TitleWrap>
@@ -80,6 +80,6 @@ export default function Payment1() {
           <label htmlFor="kakaopay">카카오페이</label>
         </S.PaymentMethod>
       </S.BodyBodyWrap>
-    </S.Payment1>
+    </S.Payment>
   );
 }
