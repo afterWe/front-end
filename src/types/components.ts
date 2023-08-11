@@ -71,3 +71,7 @@ export interface PaymentInformProps {
   delieveryFee: string;
   totalPaymentAmount: string;
 }
+
+export interface SelectColorProps {
+  color: string;
+}

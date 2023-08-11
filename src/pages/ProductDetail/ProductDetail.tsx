@@ -1,13 +1,20 @@
 import React, { FC } from 'react';
 import * as S from './ProductDetail.style';
 import {
-  Button,
   ButtonSize,
+  CheckCircleIcon,
   Colors,
-  Icon,
-  Input,
-  ModalBottomSheet
+  StarOutlineIcon,
+  StarIcon,
+  Reply,
+  EditOutlineIcon,
+  ReplySize,
+  TrashIcon,
+  ButtonIconPosition
 } from '@class101/ui';
+import Modal from '../../components/Modal/Modal';
+import { StyledButton, StyledInput } from '../../Styles/common.style';
+import { theme } from '../../Styles/theme';
 
 const ProductDetail: FC = () => {
   return (
@@ -38,24 +45,28 @@ const ProductDetail: FC = () => {
           </S.MainImgGroup>
         </S.ProductDetailImgWrap>
         <S.ProductDetailWrap>
-          <S.ProductDetailGroup marginBottom="3rem">
+          <p>
             <S.ProductName>나이키 에어 포스 1 '07</S.ProductName>
             <S.Category>여성 신발</S.Category>
             <S.Price>139,000 원</S.Price>
-          </S.ProductDetailGroup>
-          <S.ProductDetailGroup marginBottom="3rem">
+          </p>
+          <p>
             <S.Category>색상 선택</S.Category>
             <S.SelectColorList>
               {SELECT_COLOR.map(color => {
                 return (
                   <li key={color.id}>
                     <S.SelectColorBtn color={color.color} />
+                    {/* <S.CheckedColorBtn
+                      fillColor={color.color}
+                      color={color.color}
+                    /> */}
                   </li>
                 );
               })}
             </S.SelectColorList>
-          </S.ProductDetailGroup>
-          <S.ProductDetailGroup marginBottom="1rem">
+          </p>
+          <p>
             <S.Category>사이즈 선택</S.Category>
             <S.SelectSizeList>
               {SELECT_SIZE.map(size => {
@@ -66,59 +77,115 @@ const ProductDetail: FC = () => {
                 );
               })}
             </S.SelectSizeList>
-          </S.ProductDetailGroup>
-          <ModalBottomSheet
+          </p>
+          <Modal
             opener={<S.AddCartBtn>장바구니</S.AddCartBtn>}
-            title="장바구니에 담겼습니다."
-            subTitle=" "
+            contents="장바구니에 담겼습니다"
             successText="확인"
           />
-          {/* <S.AddCartBtn>장바구니</S.AddCartBtn> */}
         </S.ProductDetailWrap>
       </S.ProductDetailUpperContainer>
+      {/* <S.StyledDivider color={theme.gray} /> */}
       <S.ProductDetailLowerContainer>
-        <h5>리뷰(3.5/5.0)</h5>
-        {/* 벌점 선택 시 <Icon.Star /> */}
-        <Icon.StarOutline />
-        <Icon.StarOutline />
-        <Icon.StarOutline />
-        <Icon.StarOutline />
-        <Icon.StarOutline />
+        <S.ReviewTitle>리뷰(3.5/5.0)</S.ReviewTitle>
         <S.ReviewForm>
-          <Input className="styled input" inputStyle={S.inputCommomStyle} />
-          <Button type="submit" size={ButtonSize.LARGE}>
-            등록
-          </Button>
+          <div>
+            <StarOutlineIcon />
+            <StarOutlineIcon />
+            <StarOutlineIcon />
+            <StarOutlineIcon />
+            <StarOutlineIcon />
+          </div>
+          <S.AddReviewGroup>
+            <StyledInput width="99%" />
+            <StyledButton
+              type="submit"
+              size={ButtonSize.LARGE}
+              isMargin={false}
+            >
+              등록
+            </StyledButton>
+          </S.AddReviewGroup>
         </S.ReviewForm>
-        {/* <p>
-          <div>
-            <span>asdf******</span>
-            <span>(수정됨)</span>
-            <button>수정</button>
-            <button>삭제</button>
-            <span>2023.08.02</span>
-          </div>
-          <div>
-            <Icon.StarOutline />
-            <Icon.StarOutline />
-            <Icon.StarOutline />
-            <Icon.Star />
-            <Icon.Star />
-          </div>
-          <div>이 제품은 결국 반품했네요...</div>
-          <form>
-            <div>
-              <Icon.StarOutline />
-              <Icon.StarOutline />
-              <Icon.StarOutline />
-              <Icon.StarOutline />
-              <Icon.StarOutline />
-            </div>
-            <input placeholder="댓글 수정" />
-            <button type="submit">수정</button>
-            <button>취소</button>
-          </form>
-        </p> */}
+        <ul>
+          <li>
+            <Reply
+              name="AfterWe"
+              //댓글이 길어질 경우 다 보여줄 것인가
+              disableLineClamp={false}
+              readMoreText="전체보기"
+              hideText="숨기기"
+              hideReadMore={false}
+              //대댓글 보여줄 것인지
+              showChildren={false}
+              size={ReplySize.LARGE}
+              width="100%"
+              //댓글 수정 후 보여줄 텍스트
+              //nameDescription="수정됨"
+              nameDescriptionColor={theme.darkGray}
+              content={
+                <div>
+                  <div>
+                    <StarIcon size={16} />
+                    <StarIcon size={16} />
+                    <StarIcon size={16} />
+                    <StarOutlineIcon size={16} />
+                    <StarOutlineIcon size={16} />
+                  </div>
+                  댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용
+                  댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용
+                  댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용
+                  댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용
+                </div>
+                // 수정하기 버튼 클릭 시 생기는 input
+                // <S.ReviewForm>
+                //   <div>
+                //     <StarOutlineIcon />
+                //     <StarOutlineIcon />
+                //     <StarOutlineIcon />
+                //     <StarOutlineIcon />
+                //     <StarOutlineIcon />
+                //   </div>
+                //   <S.AddReviewGroup>
+                //     <StyledInput width="99%" />
+                //     <StyledButton
+                //       type="submit"
+                //       size={ButtonSize.LARGE}
+                //       isMargin={false}
+                //     >
+                //       등록
+                //     </StyledButton>
+                //   </S.AddReviewGroup>
+                // </S.ReviewForm>
+              }
+              timeText="업로드 시간"
+              rightAction={[
+                <Modal
+                  key="1"
+                  opener={
+                    <Reply.Action
+                      icon={<TrashIcon />}
+                      position={ButtonIconPosition.RIGHT}
+                      hidden={false}
+                    />
+                  }
+                  contents="댓글을 삭제 하시겠습니까?"
+                  successText="확인"
+                  cancelText="취소"
+                />,
+                <Reply.Action
+                  key="2"
+                  icon={<EditOutlineIcon />}
+                  //수정하기 버튼 클릭 시 input창으로 바뀌는 로직
+                  //onClick={() => {}}
+                  position={ButtonIconPosition.LEFT}
+                  hidden={false}
+                />
+              ]}
+            />
+          </li>
+        </ul>
+        <S.ShowMoreReview>리뷰 더보기</S.ShowMoreReview>
       </S.ProductDetailLowerContainer>
     </S.ProductDetail>
   );
