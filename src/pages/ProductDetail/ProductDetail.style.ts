@@ -1,47 +1,35 @@
-import styled, { css } from 'styled-components';
-import { Button, Colors, Input } from '@class101/ui';
+import styled from 'styled-components';
+import { Button, CheckCircleIcon, Colors, Divider } from '@class101/ui';
+import { PageContainer } from '../../Styles/common.style';
+import { SelectColorProps } from '../../types/components';
+import { theme } from '../../Styles/theme';
 
-interface Props {
-  marginBottom?: string;
-  color?: string;
-  border?: string;
-}
-
-export const inputCommomStyle = {
-  backgroundColor: `${Colors.gray400}`,
-  borderColor: `${css`
-    &:hover {
-      ${Colors.red500};
-    }
-  `}`
-};
-
-export const ProductDetail = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
+export const ProductDetail = styled(PageContainer)`
+  ${({ theme }) => theme.flexBox(undefined, 'center', 'column')}
 `;
 
-export const ProductDetailUpperContainer = styled.section`
-  display: flex;
-  flex-direction: row;
-  width: 85%;
-  padding-bottom: 5rem;
-  border-bottom: 1px solid ${Colors.gray400};
+export const ProductDetailUpperContainer = styled.article`
+  ${({ theme }) => theme.flexBox(undefined, undefined, 'row')}
+  width: 100%;
+  height: 38rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid ${theme.gray};
 `;
 
-export const ProductDetailLowerContainer = styled.section`
-  width: 85%;
+export const StyledDivider = styled(Divider)`
+  padding: 3rem 0;
+`;
+
+export const ProductDetailLowerContainer = styled.article`
+  width: 100%;
   padding-top: 3rem;
 `;
 
 export const ProductDetailImgWrap = styled.section`
-  display: flex;
-  flex-direction: row;
+  ${({ theme }) => theme.flexBox(undefined, undefined, 'row')}
   gap: 1.4rem;
-  width: calc(100% - 456px);
-  padding: 2rem;
+  width: 60%;
+  padding: 0 3rem 3rem;
 `;
 
 export const SubImgGroup = styled.div`
@@ -68,9 +56,8 @@ export const SubImg = styled.button`
 `;
 
 export const MainImgGroup = styled.div`
-  width: 535px;
-  max-width: 535px;
-  max-height: 669px;
+  width: 30rem;
+  height: 100%;
 `;
 
 export const MainImgBox = styled.div`
@@ -86,12 +73,9 @@ export const MainImg = styled.img`
 `;
 
 export const ProductDetailWrap = styled.section`
-  width: 456px;
-  padding: 2rem;
-`;
-
-export const ProductDetailGroup = styled.p<Props>`
-  margin-bottom: ${({ marginBottom }) => marginBottom};
+  ${({ theme }) => theme.flexBox('space-between', undefined, 'column')}
+  width: 40%;
+  padding: 0 3rem 3rem;
 `;
 
 export const ProductName = styled.h3`
@@ -114,16 +98,17 @@ export const Price = styled.div`
 `;
 
 export const SelectColorList = styled.ul`
-  display: flex;
+  ${({ theme }) => theme.flexBox(undefined, undefined, undefined)}
+  width: 70%;
   padding: 0;
   margin: 0.5rem 0;
   list-style: none;
 `;
 
-export const SelectColorBtn = styled.button<Props>`
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 1rem;
+export const SelectColorBtn = styled.button<SelectColorProps>`
+  width: 23px;
+  height: 23px;
+  margin-right: 0.9rem;
   background-color: ${({ color }) => color};
   border: ${props =>
     props.color === Colors.white ? '1px solid black' : 'none'};
@@ -134,8 +119,21 @@ export const SelectColorBtn = styled.button<Props>`
   }
 `;
 
+export const CheckedColorBtn = styled(CheckCircleIcon)<SelectColorProps>`
+  width: 23px;
+  height: 23px;
+  margin-right: 0.9rem;
+  border: ${props =>
+    props.color === Colors.white ? '1px solid black' : 'none'};
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 export const SelectSizeList = styled.ul`
-  display: flex;
+  ${({ theme }) => theme.flexBox(undefined, undefined, undefined)}
   flex-wrap: wrap;
   padding: 0;
   margin: 0.5rem 0;
@@ -147,7 +145,7 @@ export const SelectSizeBtn = styled(Button)`
 `;
 
 export const AddCartBtn = styled(Button)`
-  width: 92%;
+  width: 100%;
   height: 3.8rem;
   background-color: ${Colors.black};
   border-radius: 2rem;
@@ -160,11 +158,28 @@ export const AddCartBtn = styled(Button)`
   }
 `;
 
-export const ReviewForm = styled.form`
-  display: flex;
-  justify-content: space-between;
+export const ReviewTitle = styled.h5`
+  margin-bottom: 1rem;
+  font-weight: bold;
 `;
 
-export const ReviewInput = styled(Input)`
-  width: 99%;
+export const ReviewForm = styled.form`
+  margin-bottom: 3rem;
+`;
+
+export const AddReviewGroup = styled.div`
+  ${({ theme }) => theme.flexBox('space-between', undefined, undefined)}
+`;
+
+export const ShowMoreReview = styled(Button)`
+  height: auto;
+  padding: 0;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: ${theme.darkGray};
+
+  &:hover {
+    background: none;
+  }
 `;
