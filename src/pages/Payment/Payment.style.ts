@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import { Button } from '@class101/ui';
 
-export const Payment1 = styled.div`
+export const Payment = styled.div`
   box-sizing: border-box;
   width: 80%;
   margin: 100px auto;
