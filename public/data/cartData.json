@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "itemImage": "images/nike.jpg",
+    "itemName": "나이키 에어 포스 1 쉐도우",
+    "itemCategory": "남성 신발",
+    "itemSize": 240,
+    "itemColor": "white",
+    "itemPrice": 159000
+  },
+  {
+    "id": 2,
+    "itemImage": "images/nike.jpg",
+    "itemName": "나이키 에어 포스 1 쉐도우",
+    "itemCategory": "남성 신발",
+    "itemSize": 240,
+    "itemColor": "white",
+    "itemPrice": 159000
+  },
+  {
+    "id": 3,
+    "itemImage": "images/nike.jpg",
+    "itemName": "나이키 에어 포스 1 쉐도우",
+    "itemCategory": "남성 신발",
+    "itemSize": 240,
+    "itemColor": "white",
+    "itemPrice": 159000
+  },
+  {
+    "id": 4,
+    "itemImage": "images/nike.jpg",
+    "itemName": "나이키 에어 포스 1 쉐도우",
+    "itemCategory": "남성 신발",
+    "itemSize": 240,
+    "itemColor": "white",
+    "itemPrice": 159000
+  },
+  {
+    "id": 5,
+    "itemImage": "images/nike.jpg",
+    "itemName": "나이키 에어 포스 1 쉐도우",
+    "itemCategory": "남성 신발",
+    "itemSize": 240,
+    "itemColor": "white",
+    "itemPrice": 159000
+  }
+]
