@@ -1,16 +1,6 @@
 import { Colors } from '@class101/ui';
 import { styled } from 'styled-components';
 
-export const OrderProduct = styled.p`
-  padding: 0.8rem 0;
-  font-size: 18px;
-`;
-
-export const OrderWrap = styled.div`
-  overflow-y: auto;
-  height: 500px;
-`;
-
 export const DetailGroup = styled.div`
   ${({ theme }) => theme.flexBox('space-between', 'center', 'row')}
   background-color: ${Colors.gray200};
@@ -28,15 +18,16 @@ export const Image = styled.div`
 
   img {
     width: 100%;
+    object-fit: cover;
   }
 `;
 
-export const OrderDetail = styled.div`
+export const OrderDetail = styled.ul`
   ${({ theme }) => theme.flexBox('', '', 'column')}
   margin-left: 3rem;
 `;
 
-export const ProductName = styled.p`
+export const ProductName = styled.li`
   font-size: 18px;
   font-weight: 500;
 `;

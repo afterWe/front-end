@@ -1,0 +1,52 @@
+[
+  {
+    "id": 0,
+    "image": "/images/paid/force1.png",
+    "title": "Nike x Supreme Air Force 1 Low Flax",
+    "category": "남여 공용",
+    "color": "Brown",
+    "size": "275",
+    "quantity": 1,
+    "price": "335000"
+  },
+  {
+    "id": 1,
+    "image": "/images/paid/travis.webp",
+    "title": "Jordan 1 x Travis Scott Retro OG",
+    "category": "여성 신발",
+    "color": "White / Green",
+    "size": "250",
+    "quantity": 1,
+    "price": "450000"
+  },
+  {
+    "id": 2,
+    "image": "/images/paid/lee.png",
+    "title": "Nike Paris Saint-Germain 2023/24 Dri-Fit Stadium",
+    "category": "남여 공용",
+    "color": "White / Blue",
+    "size": "FREE",
+    "quantity": 1,
+    "price": "280000"
+  },
+  {
+    "id": 3,
+    "image": "/images/paid/force.png",
+    "title": "Nike Air Force 1 '07 LV8 Midnight Navy",
+    "category": "남성 신발",
+    "color": "Navy",
+    "size": "285",
+    "quantity": 1,
+    "price": "200000"
+  },
+  {
+    "id": 4,
+    "image": "/images/paid/martin.webp",
+    "title": "Nike x Martine Rose Shox MR4 Safety Orange",
+    "category": "여성 신발",
+    "color": "White / Yellow",
+    "size": "255",
+    "quantity": 1,
+    "price": "382000"
+  }
+]
