@@ -1,14 +1,24 @@
 import React, { FC } from 'react';
-import { ButtonSize } from '@class101/ui';
+import {
+  ButtonColor,
+  ButtonSize,
+  ControlGroup,
+  EyeIcon,
+  EyeOffIcon,
+  IconButton
+} from '@class101/ui';
 import * as S from './SignIn.style';
 import { StyledButton, StyledInput } from '../../Styles/common.style';
 import { theme } from '../../Styles/theme';
+import { Link } from 'react-router-dom';
 
 const SignIn: FC = () => {
   return (
     <S.SignIn>
       <S.MainLogo>
-        <img src="/images/runbase_logo3.png" alt="런베이스 로고" />
+        <Link to="/">
+          <img src="/images/runbase_logo3.png" alt="런베이스 로고" />
+        </Link>
       </S.MainLogo>
       <S.SignInContainer>
         <StyledInput
@@ -29,6 +39,19 @@ const SignIn: FC = () => {
             중복확인
           </StyledButton>
         </S.InputButtonGroup>
+        {/* <ControlGroup>
+          <StyledInput
+            type="email"
+            placeholder="아이디(이메일)"
+            width="97%"
+            margin="0 0 0.4rem 0"
+            //errorMessage={ERROR_MSG[0].msg}
+            //allowMessage="사용 가능한 아이디입니다."
+          />
+          <StyledButton type="submit" size={ButtonSize.LARGE} isMargin={false}>
+            중복확인
+          </StyledButton>
+        </ControlGroup> */}
         <S.InputEyeGroup>
           <StyledInput
             type="password"
@@ -36,7 +59,14 @@ const SignIn: FC = () => {
             margin="0 0 0.4rem 0"
             //errorMessage="알파벳 소문자, 숫자, 특수문자를 포함해 8자 이상이어야 합니다."
           />
-          <S.StyledEye fillColor={theme.gray} />
+          <S.StyledEye>
+            <IconButton
+              //클릭했을 때 icon={<EyeIcon />} 으로 변경
+              icon={<EyeOffIcon />}
+              color={ButtonColor.TRANSPARENT}
+              fillColor={theme.gray}
+            />
+          </S.StyledEye>
         </S.InputEyeGroup>
         <S.InputEyeGroup>
           <StyledInput
@@ -45,7 +75,14 @@ const SignIn: FC = () => {
             margin="0 0 0.4rem 0"
             //errorMessage="비밀번호가 일치하지 않습니다."
           />
-          <S.StyledEye fillColor={theme.gray} />
+          <S.StyledEye>
+            <IconButton
+              //클릭했을 때 icon={<EyeIcon />} 으로 변경
+              icon={<EyeOffIcon />}
+              color={ButtonColor.TRANSPARENT}
+              fillColor={theme.gray}
+            />
+          </S.StyledEye>
         </S.InputEyeGroup>
         <StyledInput
           placeholder="전화번호"
