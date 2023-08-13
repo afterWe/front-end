@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface GalleryProps {
   img: string;
 }
@@ -32,4 +34,19 @@ export interface OrderInfoProps {
     price: string;
     payment_method: string;
   }[];
+}
+
+export interface ModalProps {
+  opener: ReactNode;
+  title?: string;
+  contents: ReactNode | string;
+  successText?: string;
+  cancelText?: string;
+  modalWidth?: string;
+  onSuccess?: (() => void) | undefined;
+  onCancel?: (() => void) | undefined;
+}
+
+export interface ModalSizeProps {
+  width?: string;
 }
