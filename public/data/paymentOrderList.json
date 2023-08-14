@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "(W) Jordan 1 x Travis Scott ",
+    "image": "/images/payment/travis.png",
+    "type": "여성 신발",
+    "quantity": "1",
+    "price": 470000
+  },
+  {
+    "id": 2,
+    "name": "Nike x Peaceminusone LS",
+    "image": "/images/payment/pmo.webp",
+    "type": "남여 공용",
+    "quantity": "1",
+    "price": 150000
+  },
+  {
+    "id": 3,
+    "name": "(M) Jordan 1 Retro Low OG Black and Blue",
+    "image": "/images/payment/retro low.webp",
+    "type": "남성 신발",
+    "quantity": "1",
+    "price": 170000
+  },
+  {
+    "id": 4,
+    "name": "Nike Paris Saint-Germain 2023/24 Dri-Fit",
+    "image": "/images/payment/psg.webp",
+    "type": "남여 공용",
+    "quantity": "1",
+    "price": 104000
+  },
+  {
+    "id": 5,
+    "name": "Nike x Supreme Air Force 1",
+    "image": "/images/payment/airforce.webp",
+    "type": "남여 공용",
+    "quantity": "1",
+    "price": 356000
+  }
+]
