@@ -55,3 +55,19 @@ export interface OrderInfoComponentProps {
 export interface OrderDetailComponentProps {
   orderDetailData: OrderDetailProps[];
 }
+
+export interface PaymentProps {
+  id: number;
+  name: string;
+  image: string;
+  type: string;
+  quantity: string;
+  price: number;
+}
+
+export interface PaymentInformProps {
+  id?: number;
+  productAmount: string;
+  delieveryFee: string;
+  totalPaymentAmount: string;
+}
