@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import {
   ButtonColor,
   ButtonSize,
-  ControlGroup,
   EyeIcon,
   EyeOffIcon,
   IconButton
@@ -39,19 +38,6 @@ const SignIn: FC = () => {
             중복확인
           </StyledButton>
         </S.InputButtonGroup>
-        {/* <ControlGroup>
-          <StyledInput
-            type="email"
-            placeholder="아이디(이메일)"
-            width="97%"
-            margin="0 0 0.4rem 0"
-            //errorMessage={ERROR_MSG[0].msg}
-            //allowMessage="사용 가능한 아이디입니다."
-          />
-          <StyledButton type="submit" size={ButtonSize.LARGE} isMargin={false}>
-            중복확인
-          </StyledButton>
-        </ControlGroup> */}
         <S.InputEyeGroup>
           <StyledInput
             type="password"
