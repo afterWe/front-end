@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
+import Modal from '../../components/Modal/Modal';
 import * as S from './ProductDetail.style';
 import {
-  ButtonSize,
-  CheckCircleIcon,
   Colors,
   StarOutlineIcon,
   StarIcon,
@@ -12,8 +11,6 @@ import {
   TrashIcon,
   ButtonIconPosition
 } from '@class101/ui';
-import Modal from '../../components/Modal/Modal';
-import { StyledButton, StyledInput } from '../../Styles/common.style';
 import { theme } from '../../Styles/theme';
 
 const ProductDetail: FC = () => {
@@ -57,10 +54,11 @@ const ProductDetail: FC = () => {
                 return (
                   <li key={color.id}>
                     <S.SelectColorBtn color={color.color} />
-                    {/* <S.CheckedColorBtn
-                      fillColor={color.color}
-                      color={color.color}
-                    /> */}
+                    {/* {color.title === 'white' ? (
+                      <S.CheckedColorBtnWhite fillColor="black" />
+                    ) : (
+                      <S.CheckedColorBtn fillColor={color.color} />
+                    )} */}
                   </li>
                 );
               })}
@@ -85,7 +83,7 @@ const ProductDetail: FC = () => {
           />
         </S.ProductDetailWrap>
       </S.ProductDetailUpperContainer>
-      {/* <S.StyledDivider color={theme.gray} /> */}
+      <S.StyledDivider color={theme.gray} />
       <S.ProductDetailLowerContainer>
         <S.ReviewTitle>리뷰(3.5/5.0)</S.ReviewTitle>
         <S.ReviewForm>
@@ -97,14 +95,10 @@ const ProductDetail: FC = () => {
             <StarOutlineIcon />
           </div>
           <S.AddReviewGroup>
-            <StyledInput width="99%" />
-            <StyledButton
-              type="submit"
-              size={ButtonSize.LARGE}
-              isMargin={false}
-            >
-              등록
-            </StyledButton>
+            <S.ReviewText placeholder="후기를 남겨주세요!" />
+            <S.AddReviewBtnOuter>
+              <S.AddReviewBtn type="submit">게시</S.AddReviewBtn>
+            </S.AddReviewBtnOuter>
           </S.AddReviewGroup>
         </S.ReviewForm>
         <ul>
@@ -147,14 +141,10 @@ const ProductDetail: FC = () => {
                 //     <StarOutlineIcon />
                 //   </div>
                 //   <S.AddReviewGroup>
-                //     <StyledInput width="99%" />
-                //     <StyledButton
-                //       type="submit"
-                //       size={ButtonSize.LARGE}
-                //       isMargin={false}
-                //     >
-                //       등록
-                //     </StyledButton>
+                //     <S.ReviewText placeholder="후기를 남겨주세요!" />
+                //     <S.AddReviewBtnOuter>
+                //       <S.AddReviewBtn type="submit">게시</S.AddReviewBtn>
+                //     </S.AddReviewBtnOuter>
                 //   </S.AddReviewGroup>
                 // </S.ReviewForm>
               }
@@ -176,7 +166,7 @@ const ProductDetail: FC = () => {
                 <Reply.Action
                   key="2"
                   icon={<EditOutlineIcon />}
-                  //수정하기 버튼 클릭 시 input창으로 바뀌는 로직
+                  //수정하기 버튼 클릭 시 textarea로 바뀌는 로직
                   //onClick={() => {}}
                   position={ButtonIconPosition.LEFT}
                   hidden={false}
