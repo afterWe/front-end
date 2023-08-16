@@ -1,19 +1,24 @@
 import styled from 'styled-components';
-import { Button, CheckCircleIcon, Colors, Divider } from '@class101/ui';
+import {
+  Button,
+  CheckCircleIcon,
+  CheckCircleOutlineIcon,
+  Colors,
+  Divider,
+  Textarea
+} from '@class101/ui';
 import { PageContainer } from '../../Styles/common.style';
 import { SelectColorProps } from '../../types/components';
 import { theme } from '../../Styles/theme';
 
 export const ProductDetail = styled(PageContainer)`
-  ${({ theme }) => theme.flexBox(undefined, 'center', 'column')}
+  margin: 0 auto;
 `;
 
 export const ProductDetailUpperContainer = styled.article`
   ${({ theme }) => theme.flexBox(undefined, undefined, 'row')}
   width: 100%;
   height: 38rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid ${theme.gray};
 `;
 
 export const StyledDivider = styled(Divider)`
@@ -22,7 +27,6 @@ export const StyledDivider = styled(Divider)`
 
 export const ProductDetailLowerContainer = styled.article`
   width: 100%;
-  padding-top: 3rem;
 `;
 
 export const ProductDetailImgWrap = styled.section`
@@ -119,13 +123,24 @@ export const SelectColorBtn = styled.button<SelectColorProps>`
   }
 `;
 
-export const CheckedColorBtn = styled(CheckCircleIcon)<SelectColorProps>`
+export const CheckedColorBtnWhite = styled(CheckCircleOutlineIcon)`
   width: 23px;
   height: 23px;
   margin-right: 0.9rem;
-  border: ${props =>
-    props.color === Colors.white ? '1px solid black' : 'none'};
   border-radius: 50%;
+  box-sizing: border-box;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const CheckedColorBtn = styled(CheckCircleIcon)`
+  width: 23px;
+  height: 23px;
+  margin-right: 0.9rem;
+  border-radius: 50%;
+  box-sizing: border-box;
 
   &:hover {
     cursor: pointer;
@@ -168,7 +183,29 @@ export const ReviewForm = styled.form`
 `;
 
 export const AddReviewGroup = styled.div`
-  ${({ theme }) => theme.flexBox('space-between', undefined, undefined)}
+  margin-top: 0.3rem;
+`;
+
+export const ReviewText = styled(Textarea)`
+  margin-bottom: 0.2rem;
+  border-color: ${theme.gray};
+  border-radius: 7px;
+  resize: none;
+`;
+
+export const AddReviewBtnOuter = styled.div`
+  ${({ theme }) => theme.flexBox('flex-end', undefined, undefined)}
+  width: 100%;
+`;
+
+export const AddReviewBtn = styled(Button)`
+  border-radius: 7px;
+  background-color: ${Colors.black};
+  color: ${Colors.white};
+
+  &:hover {
+    background-color: ${Colors.gray700};
+  }
 `;
 
 export const ShowMoreReview = styled(Button)`
