@@ -1,21 +1,34 @@
 import { styled } from 'styled-components';
-import { Button, Colors, Divider } from '@class101/ui';
+import { Button, Colors, Divider, Headline2, Headline3 } from '@class101/ui';
 import { PageContainer } from '../../Styles/common.style';
 
 export const Payment = styled(PageContainer)`
   box-sizing: border-box;
 `;
 
-export const TitleBox = styled.div`
+export const HeadlineBox = styled.div`
   ${({ theme }) => theme.flexBox('', 'center', 'column')}
 `;
 
-export const Title = styled.h2`
-  font-size: 2rem;
+export const Headline = styled(Headline2)`
+  font-weight: 400;
 `;
 
-export const StyledDivider = styled(Divider)`
-  padding: 2rem 0rem;
+export const SubHeadline = styled(Headline3)`
+  font-weight: 500;
+  margin: 2rem 0;
+`;
+
+export const EditBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ModalBox = styled.div`
+  margin-top: 4.8rem;
+  margin-right: 1.8rem;
+  cursor: pointer;
 `;
 
 export const PaymentInfoContainer = styled.div`
@@ -23,39 +36,28 @@ export const PaymentInfoContainer = styled.div`
   ${({ theme }) => theme.flexBox('space-between', '', 'row')}
 `;
 
-export const DelieveryWrap = styled.div`
+export const DelieveryWrap = styled.section`
   width: 47%;
+`;
+
+export const AddressEditBox = styled.div`
+  width: 95%;
 `;
 
 export const DelieveryTitle = styled.h3`
   font-size: 1.5rem;
 `;
 
-// -------------정인님 컴포넌트 스타일 들어올 부분 시작---------
+export const DelieveryList = styled.p`
+  color: ${({ theme }) => theme.darkGray};
+  font-size: 13.5px;
 
-export const DelieveryGroupTopBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  /* align-items: center; */
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
-export const shippingList = styled.u`
-  padding-top: 11%;
-  font-size: 12px;
-  color: #909090;
-`;
-
-export const InputBox = styled.div``;
-
-export const PostCodeBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-`;
-
-// -------------------끝---------------------------
-
-export const PaymentInfoWrap = styled.div`
+export const PaymentInfoWrap = styled.section`
   width: 43%;
 `;
 
@@ -63,10 +65,14 @@ export const PaymentTitle = styled.h3`
   font-size: 1.5rem;
 `;
 
-export const PaymentDetailInfoBox = styled.ul`
+export const PaymentDetailInfoBox = styled.dl`
   margin: 2rem 0;
   font-size: 1.1rem;
   ${({ theme }) => theme.flexBox('space-between', '', 'row')}
+`;
+
+export const StyledDivider = styled(Divider)`
+  padding: 2rem 0rem;
 `;
 
 export const PaymentOrderListWrap = styled.div`
@@ -118,5 +124,9 @@ export const PaymentMethod = styled(DelieveryTitle)`
 `;
 
 export const PaymentMethodTitle = styled.h3`
-  margin: 1.5rem 0;
+  margin: 3rem 0;
+`;
+
+export const RadioBtnValue = styled.p`
+  font-size: 1.2rem;
 `;
