@@ -14,7 +14,7 @@ export const theme = {
     if (alignItem !== undefined) flexString += `align-items: ${alignItem};`;
     if (direction !== undefined) flexString += `flex-direction: ${direction};`;
 
-    return flexString;
+    return flexString;  
   },
   positionBox: (
     position: string,
