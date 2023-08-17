@@ -1,4 +1,3 @@
-import { RadioButton, RadioButtonGroup } from '@class101/ui';
 import * as S from './Payment.style';
 import { FC, useEffect, useState } from 'react';
 import { PaymentInformProps, PaymentProps } from '../../types/components';
@@ -48,7 +47,7 @@ const Payment: FC = () => {
             </S.ModalBox>
           </S.EditBox>
           <S.AddressEditBox>
-            <AddressEdit />
+            <AddressEdit showRecipient={false} />
           </S.AddressEditBox>
         </S.DelieveryWrap>
         <S.PaymentInfoWrap>

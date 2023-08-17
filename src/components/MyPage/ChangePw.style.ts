@@ -18,15 +18,19 @@ export const Group = styled.div`
   align-items: center;
 `;
 
-export const ChangePwTitle = styled.div`
+export const ChangePwTitleWrap = styled.div`
   display: flex;
   width: 100%;
   padding: 2.5rem 0;
 `;
 
-export const Title = styled.div``;
+export const ChangePwTitle = styled.div`
+  font-size: 1.25rem;
+`;
 
-export const ChangePwBox = styled.div``;
+export const ChangePwBox = styled.form`
+  padding-top: 2rem;
+`;
 
 export const StyledInput = styled(Input)<Props>`
   width: 20rem;
@@ -38,9 +42,7 @@ export const StyledInput = styled(Input)<Props>`
   }
 `;
 
-export const InputPasswordWrap = styled.div`
-  position: relative;
-`;
+export const InputPasswordWrap = styled.div``;
 
 export const StyledButton = styled(Button)<Props>`
   display: flex;

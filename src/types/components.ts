@@ -11,6 +11,7 @@ export interface StyledInputProps {
 
 export interface StyledButtonProps {
   isMargin: boolean;
+  margin?: string;
 }
 
 export interface ModalProps {
@@ -79,7 +80,6 @@ export interface PaymentShowRecipientProps {
 export interface SelectColorProps {
   color: string;
 }
-
 export interface RadioBtnProps {
   value: string;
   name: string;
@@ -96,7 +96,6 @@ export interface RadioBtnLabelProps {
 export interface StyledRadioBtnProps {
   btnMargin?: string;
 }
-
 export interface SelectColorProps {
   color: string;
 }
@@ -114,4 +113,12 @@ export interface ProductCardProps {
 export interface ProductCardStyleProps {
   padding?: string;
   width: string;
+}
+export interface StyledTabBtnProps {
+  active: boolean;
+}
+export interface OrderItemProps {
+  id: number;
+  orderNum: string;
+  product: string;
 }

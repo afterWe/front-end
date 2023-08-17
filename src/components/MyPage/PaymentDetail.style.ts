@@ -1,31 +1,30 @@
 import styled from 'styled-components';
 import { Button, Pagination } from '@class101/ui';
 
-export const PaymentDetail = styled.div`
+export const PaymentDetail = styled.article`
   margin: 0 auto;
   width: 100%;
   height: 37rem;
 `;
 
-export const Group = styled.div`
+export const Group = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const PaymentTitle = styled.div`
+export const PaymentHeadlineWrap = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 2.5rem 0;
 `;
 
-export const Title = styled.div``;
-
-export const Detail = styled.div``;
+export const PaymentTitle = styled.div`
+  font-size: 1.25rem;
+`;
 
 export const PaymentBox = styled.div`
-  display: flex;
   width: 100%;
 `;
 
@@ -66,4 +65,8 @@ export const PaginationWrapper = styled.div`
 export const StyledPagination = styled(Pagination)`
   margin-left: auto;
   padding-top: 1rem;
+
+  .dKlNJd {
+    background-color: #333;
+  }
 `;

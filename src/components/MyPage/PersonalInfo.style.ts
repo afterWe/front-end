@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import {
-  Input,
   Colors,
   Button,
+  TextButton,
   RadioButtonGroup,
   RadioButton,
   ControlGroup
@@ -20,41 +20,32 @@ export const Group = styled.div`
   align-items: center;
 `;
 
-export const PersonalInfoTitle = styled.div`
+export const PersonalInfoTitleWrap = styled.div`
   display: flex;
   width: 100%;
   padding: 2.5rem 0;
 `;
 
-export const Title = styled.div``;
+export const PersonalInfoTitle = styled.div`
+  font-size: 1.25rem;
+`;
 
 export const Detail = styled.div``;
 
 export const PersonalInfoBox = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
 `;
 
-export const InputBox = styled.div`
-  padding-right: 3rem;
-`;
-
-export const StyledInput = styled(Input)`
-  width: 30rem;
-  margin-bottom: 1rem;
-  border-color: ${Colors.gray400};
-  &:hover {
-    border-color: ${Colors.gray600};
-  }
-  ::placeholder {
-    /* display: flex;
-    align-items: center; */
-  }
+export const InputBox = styled.form`
+  width: 100%;
+  padding-right: 4rem;
+  text-align: center;
 `;
 
 export const ButtonBox = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: end;
   gap: 0.5rem;
   padding-top: 2rem;
 `;
@@ -78,7 +69,7 @@ export const CancelButton = styled(Button)`
 export const ShippingAdderssBox = styled.div`
   border-left: 1px solid #ccc;
   height: 400px;
-  padding-left: 3rem;
+  padding-left: 4rem;
 `;
 
 export const ShippingTitle = styled.div`
@@ -88,7 +79,7 @@ export const ShippingTitle = styled.div`
 
 export const AddressList = styled.div``;
 
-export const AddAddress = styled.div`
+export const AddAddress = styled(TextButton)`
   font-size: 0.8rem;
   cursor: pointer;
 `;
@@ -121,4 +112,9 @@ export const StyledButton = styled(Button)`
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: 500;
+`;
+
+export const AddressEditWrap = styled.div`
+  width: 80%;
+  margin: 2rem auto;
 `;
