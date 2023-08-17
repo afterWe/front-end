@@ -1,14 +1,9 @@
 import React, { FC, useState, useEffect } from 'react';
 import * as S from './PaymentDetail.style';
-
-interface OrderItem {
-  id: number;
-  orderNum: string;
-  product: string;
-}
+import { OrderItemProps } from '../../types/components';
 
 const PaymentDetail: FC = () => {
-  const [data, setData] = useState<OrderItem[]>([]);
+  const [data, setData] = useState<OrderItemProps[]>([]);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
   useEffect(() => {
@@ -24,10 +19,9 @@ const PaymentDetail: FC = () => {
   return (
     <S.PaymentDetail>
       <S.Group>
-        <S.PaymentTitle>
-          <S.Title>결제 내역</S.Title>
-          <S.Detail>(추가)</S.Detail>
-        </S.PaymentTitle>
+        <S.PaymentHeadlineWrap>
+          <S.PaymentTitle>결제 내역</S.PaymentTitle>
+        </S.PaymentHeadlineWrap>
         <S.PaymentBox>
           <S.PaymentTable>
             <colgroup>
@@ -59,7 +53,8 @@ const PaymentDetail: FC = () => {
         </S.PaymentBox>
         <S.StyledPagination
           currentPageIndex={currentPageIndex}
-          totalPageIndex={8}
+          totalPageIndex={4}
+          pageCountPerView={5}
           onChange={(number: number) => setCurrentPageIndex(number)}
         />
       </S.Group>
