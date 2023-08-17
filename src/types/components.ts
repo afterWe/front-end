@@ -75,3 +75,20 @@ export interface PaymentInformProps {
 export interface SelectColorProps {
   color: string;
 }
+
+export interface RadioBtnProps {
+  value: string;
+  name: string;
+  contents: string | ReactNode;
+  align?: 'top' | 'middle';
+  btnMargin?: string;
+  onChange: (value: string) => void;
+}
+
+export interface RadioBtnLabelProps {
+  align?: 'top' | 'middle';
+}
+
+export interface StyledRadioBtnProps {
+  btnMargin?: string;
+}

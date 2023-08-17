@@ -1,4 +1,4 @@
-import { Colors, PersonIcon } from '@class101/ui';
+import { Colors } from '@class101/ui';
 import React, { FC } from 'react';
 import * as S from './style/Header.style';
 
