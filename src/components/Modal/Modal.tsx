@@ -19,6 +19,8 @@ const Modal: FC<ModalProps> = ({
 
   const handleModal = () => {
     setIsOpen(!isOpen);
+
+    document.body.style.overflow = isOpen ? 'auto' : 'hidden';
   };
 
   return (
