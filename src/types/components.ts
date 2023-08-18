@@ -92,3 +92,7 @@ export interface RadioBtnLabelProps {
 export interface StyledRadioBtnProps {
   btnMargin?: string;
 }
+
+export interface SelectColorProps {
+  color: string;
+}
