@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "imgUrl": "images/nike.jpg",
+    "imgAlt": "product img",
+    "name": "에어 포스 1 ",
+    "price": 1000000
+  },
+  {
+    "id": 2,
+    "imgUrl": "images/nike.jpg",
+    "imgAlt": "product img",
+    "name": "나이키 에어 포스 2 ",
+    "price": 1500000
+  },
+  {
+    "id": 3,
+    "imgUrl": "images/nike.jpg",
+    "imgAlt": "product img",
+    "name": "나이키 에어 포스 3 ",
+    "price": 2000000
+  },
+  {
+    "id": 4,
+    "imgUrl": "images/nike.jpg",
+    "imgAlt": "product img",
+    "name": "나이키 에어 포스 4 ",
+    "price": 2500000
+  },
+  {
+    "id": 5,
+    "imgUrl": "images/nike.jpg",
+    "imgAlt": "product img",
+    "name": "나이키 에어 포스 5 ",
+    "price": 3000000
+  },
+  {
+    "id": 6,
+    "imgUrl": "images/nike.jpg",
+    "imgAlt": "product img",
+    "name": "나이키 에어 포스 6 ",
+    "price": 3500000
+  },
+  {
+    "id": 7,
+    "imgUrl": "images/nike.jpg",
+    "imgAlt": "product img",
+    "name": "나이키 에어 포스 7 ",
+    "price": 4000000
+  }
+]
