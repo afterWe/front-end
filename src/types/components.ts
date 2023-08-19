@@ -100,3 +100,18 @@ export interface StyledRadioBtnProps {
 export interface SelectColorProps {
   color: string;
 }
+
+export interface ProductCardProps {
+  id?: number;
+  imgUrl: string;
+  imgAlt: string;
+  name: string;
+  price: string;
+  cardPadding?: string;
+  cardWidth: string;
+}
+
+export interface ProductCardStyleProps {
+  padding?: string;
+  width: string;
+}
