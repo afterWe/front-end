@@ -122,8 +122,13 @@ export interface OrderItemProps {
   orderNum: string;
   product: string;
 }
-export interface Address {
+
+export interface AddressDataProps {
   id: number;
   name: string;
   addressDetail: string;
+}
+
+export interface AddressTitleProps {
+  showAddressTitle: boolean;
 }
