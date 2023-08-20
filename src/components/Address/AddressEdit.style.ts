@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { ControlGroup, Button } from '@class101/ui';
 
 export const AddressEditContainer = styled.div`
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 `;
 
 export const StyledControlGroup = styled(ControlGroup)`

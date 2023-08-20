@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 import { ButtonSize } from '@class101/ui';
 import { StyledInput } from '../../Styles/common.style';
 import * as S from './AddressEdit.style';
+import { PaymentShowRecipientProps } from '../../types/components';
 
-const AddressEdit: FC = () => {
+const AddressEdit: FC<PaymentShowRecipientProps> = ({ showRecipient }) => {
   return (
     <S.AddressEditContainer>
       <StyledInput
@@ -11,11 +12,13 @@ const AddressEdit: FC = () => {
         label="배송지이름 *"
         // errorMessage='배송지 이름을 입력해주세요.'
       />
-      <StyledInput
-        margin="0 0 0.5rem 0"
-        label="수령인 *"
-        // errorMessage='수령인 이름을 입력해주세요.'
-      />
+      {showRecipient && (
+        <StyledInput
+          margin="0 0 0.5rem 0"
+          label="수령인 *"
+          // errorMessage='수령인 이름을 입력해주세요.'
+        />
+      )}
       <StyledInput
         margin="0 0 0.5rem 0"
         label="휴대폰번호 *"

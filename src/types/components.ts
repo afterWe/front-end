@@ -72,6 +72,10 @@ export interface PaymentInformProps {
   totalPaymentAmount: string;
 }
 
+export interface PaymentShowRecipientProps {
+  showRecipient: boolean;
+}
+
 export interface SelectColorProps {
   color: string;
 }
