@@ -1,5 +1,13 @@
 import styled from 'styled-components';
-import { Button, Colors, Select, TextButton, TrashIcon } from '@class101/ui';
+import {
+  Button,
+  Colors,
+  Select,
+  TextButton,
+  Headline3,
+  Body2,
+  Headline2
+} from '@class101/ui';
 
 export const Cart = styled.div`
   ${({ theme }) => theme.flexBox('center')}
@@ -13,17 +21,16 @@ export const CartListContainer = styled.div`
 export const FreeShipServiceWrap = styled.div`
   padding: 1rem;
   margin-bottom: 1rem;
-  border: 0.2rem solid ${({ theme }) => theme.gray};
-  line-height: 1.2rem;
+  border: 2px solid ${({ theme }) => theme.gray};
+  line-height: 2rem;
 `;
 
-export const FreeShipServiceTitle = styled.p`
-  font-size: 1.2rem;
+export const FreeShipServiceTitle = styled(Headline3)`
   color: ${Colors.orange500};
 `;
 
-export const FreeShipServiceContent = styled.p`
-  font-size: 0.8rem;
+export const FreeShipServiceContent = styled(Body2)`
+  color: ${({ theme }) => theme.gray};
 `;
 
 export const StyledTextButton = styled(TextButton)`
@@ -32,28 +39,18 @@ export const StyledTextButton = styled(TextButton)`
 `;
 
 export const ReturnAndRefundWrap = styled.div`
-  background-color: ${({ theme }) => theme.gray};
-  margin-bottom: 1rem;
   padding: 1rem;
-  line-height: 1.2rem;
-`;
-
-export const ReturnAndRefundTitle = styled.p`
-  font-size: 1rem;
-`;
-
-export const ReturnAndRefundContent = styled.p`
-  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  background-color: ${({ theme }) => theme.gray};
+  line-height: 2rem;
 `;
 
 export const CartListWrap = styled.div`
   margin-top: 3rem;
 `;
 
-export const CartListTitle = styled.h1`
-  color: ${({ theme }) => theme.gray};
-  font-size: 2rem;
-  margin-bottom: 1rem;
+export const StyledHeadline2 = styled(Headline2)`
+  margin-bottom: 3rem;
 `;
 
 export const CartListGroup = styled.div`
@@ -82,21 +79,18 @@ export const ItemInfoBox = styled.div`
   ${({ theme }) => theme.flexBox('space-between', '', 'column')}
 `;
 
-export const ItemInfo = styled.div``;
-
 export const ItemInfoName = styled.p`
   font-size: 1.2rem;
   margin-bottom: 1rem;
 `;
 
 export const ItemInfoDetail = styled.p`
-  color: ${({ theme }) => theme.gray};
+  color: ${({ theme }) => theme.darkGray};
   font-size: 1rem;
 `;
 
-export const StyledSelectBox = styled.div``;
-
 export const StyledSelect = styled(Select)`
+  color: black;
   width: 5rem;
   height: 3rem;
 `;
@@ -104,14 +98,6 @@ export const StyledSelect = styled(Select)`
 export const DeleteAndPriceBox = styled.div`
   ${({ theme }) => theme.flexBox('space-between', 'flex-end', 'column')}
 `;
-
-export const StyeldTrachIcon = styled(TrashIcon)`
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-export const ItemPrice = styled.p``;
 
 export const OrderListContainer = styled.div`
   width: 30%;
@@ -121,29 +107,24 @@ export const OrderListContainer = styled.div`
   height: 100%;
 `;
 
-export const OrderListTitle = styled.div`
-  font-size: 2rem;
-  margin-bottom: 2rem;
-`;
-
 export const ProductPriceBox = styled.div`
-  ${({ theme }) => theme.flexBox('space-between', '', '')}
+  ${({ theme }) => theme.flexBox('space-between', undefined, undefined)}
   line-height: 2rem;
 `;
 
 export const ShippingFeeBox = styled.div`
-  ${({ theme }) => theme.flexBox('space-between', '', '')}
+  ${({ theme }) => theme.flexBox('space-between', undefined, undefined)}
   line-height: 2rem;
 `;
 
 export const TotalPriceBox = styled.div`
-  ${({ theme }) => theme.flexBox('space-between', '', '')}
+  ${({ theme }) => theme.flexBox('space-between', undefined, undefined)}
   margin-top: 2rem;
   line-height: 2rem;
 `;
 
 export const CartOrderButtonBox = styled.div`
-  ${({ theme }) => theme.flexBox('center', '', '')}
+  ${({ theme }) => theme.flexBox('center', undefined, undefined)}
   margin-top: 2rem;
 `;
 

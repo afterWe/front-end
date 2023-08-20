@@ -1,14 +1,23 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Divider } from '@class101/ui';
+import {
+  Body1,
+  Body2,
+  Divider,
+  ButtonColor,
+  ButtonSize,
+  TrashIcon,
+  IconButton
+} from '@class101/ui';
 import { PageContainer } from '../../Styles/common.style';
 import * as S from './Cart.style';
+import Modal from '../../components/Modal/Modal';
 
 interface CartItem {
   id: number;
   itemImage: string;
   itemName: string;
   itemCategory: string;
-  itemSize: number;
+  itemSize: number | string;
   itemColor: string;
   itemPrice: number;
 }
@@ -41,14 +50,12 @@ const Cart: FC = () => {
             </S.FreeShipServiceContent>
           </S.FreeShipServiceWrap>
           <S.ReturnAndRefundWrap>
-            <S.ReturnAndRefundTitle>
-              반품 및 환불 지연 안내
-            </S.ReturnAndRefundTitle>
-            <S.ReturnAndRefundContent>자세히보기</S.ReturnAndRefundContent>
+            <Body1>반품 및 환불 지연 안내</Body1>
+            <Body2 color="gray">자세히보기</Body2>
           </S.ReturnAndRefundWrap>
           <S.CartListWrap>
             <>
-              <S.CartListTitle>장바구니</S.CartListTitle>
+              <S.StyledHeadline2>장바구니</S.StyledHeadline2>
               {cartData &&
                 cartData.map(
                   ({
@@ -64,31 +71,43 @@ const Cart: FC = () => {
                       <S.CartListGroup key={id}>
                         <S.CartListDetailBox>
                           <S.ItemImageBox>
-                            <S.ItemImage src={itemImage} alt="cart item" />
+                            <S.ItemImage src={itemImage} alt={itemName} />
                           </S.ItemImageBox>
                           <S.ItemInfoBox>
-                            <S.ItemInfo>
+                            <div>
                               <S.ItemInfoName>{itemName}</S.ItemInfoName>
                               <S.ItemInfoDetail>
                                 {itemCategory} {itemSize}/{itemColor}
                               </S.ItemInfoDetail>
-                            </S.ItemInfo>
-                            <S.StyledSelectBox>
+                            </div>
+                            <div>
                               <S.StyledSelect
                                 value=""
                                 placeholder="1"
                                 options={['1', '2', '3', '4', '5']}
                                 size="md"
                               />
-                            </S.StyledSelectBox>
+                            </div>
                           </S.ItemInfoBox>
                         </S.CartListDetailBox>
                         <S.DeleteAndPriceBox>
-                          <S.StyeldTrachIcon size={20} />
-                          <S.ItemPrice>{itemPrice} 원</S.ItemPrice>
+                          <Modal
+                            opener={
+                              <IconButton
+                                icon={<TrashIcon />}
+                                size={ButtonSize.XSMALL}
+                                color={ButtonColor.TRANSPARENT}
+                              />
+                            }
+                            title=""
+                            contents="삭제하시겠습니까?"
+                            successText="확인"
+                            cancelText="취소"
+                          />
+                          {itemPrice.toLocaleString()} 원
                         </S.DeleteAndPriceBox>
                       </S.CartListGroup>
-                      <Divider />
+                      <Divider color="gray" />
                     </>
                   )
                 )}
@@ -96,10 +115,10 @@ const Cart: FC = () => {
           </S.CartListWrap>
         </S.CartListContainer>
         <S.OrderListContainer>
-          <S.OrderListTitle>주문 내역</S.OrderListTitle>
+          <S.StyledHeadline2>주문 내역</S.StyledHeadline2>
           <S.ProductPriceBox>
             <span>상품금액 :</span>
-            <span>data</span>
+            <span>data.toLocaleString()</span>
           </S.ProductPriceBox>
           <S.ShippingFeeBox>
             <span>배송비 :</span>
@@ -107,7 +126,7 @@ const Cart: FC = () => {
           </S.ShippingFeeBox>
           <S.TotalPriceBox>
             <span>총 결제 금액 :</span>
-            <span>data</span>
+            <span>data.toLocaleString()</span>
           </S.TotalPriceBox>
           <S.CartOrderButtonBox>
             <S.CartOrderButton fill>결제 하기</S.CartOrderButton>
