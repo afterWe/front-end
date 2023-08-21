@@ -30,7 +30,6 @@ export const PaymentBox = styled.div`
 
 export const PaymentTable = styled.table`
   width: 100%;
-
   thead {
     background-color: #ccc;
   }

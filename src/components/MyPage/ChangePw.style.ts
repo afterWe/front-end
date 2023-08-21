@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Input, Colors, Button } from '@class101/ui';
-
 interface Props {
   width?: string;
   margin?: string;
@@ -51,7 +50,6 @@ export const StyledButton = styled(Button)<Props>`
   background: ${Colors.gray400};
   font-weight: 500;
   font-size: 14px;
-
   &:hover {
     background: ${Colors.gray500};
     border-color: ${Colors.gray500};

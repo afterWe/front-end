@@ -122,3 +122,8 @@ export interface OrderItemProps {
   orderNum: string;
   product: string;
 }
+export interface Address {
+  id: number;
+  name: string;
+  addressDetail: string;
+}
