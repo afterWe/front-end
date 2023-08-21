@@ -35,7 +35,7 @@ const Main: FC = () => {
         </S.MainProductContents>
         <S.BuyMainProduct>구매하기</S.BuyMainProduct>
       </S.MainProductWrap>
-      <Section title="New Product">
+      {/* <Section title="New Product">
         <Carousel
           navigationPosition={CarouselNavigationPosition.TopRightOut}
           lgSlidesPerView={4}
@@ -52,7 +52,7 @@ const Main: FC = () => {
             </Slide>
           ))}
         </Carousel>
-      </Section>
+      </Section> */}
       {/* <S.NewProductWrapper></S.NewProductWrapper> */}
     </main>
   );
