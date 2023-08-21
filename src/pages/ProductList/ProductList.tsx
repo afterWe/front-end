@@ -1,47 +1,39 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import * as S from './ProductList.style';
-import { ButtonColor, Colors, DarkColors } from '@class101/ui';
+import { Colors } from '@class101/ui';
 
 const ProductList: FC = () => {
   return (
     <S.ProductList>
       <S.ProductAside>
-        <p>
-          <S.SizeCategory>사이즈</S.SizeCategory>
-          <S.SizeList>
-            {ASIDE_SIZE.map(el => {
-              return (
-                <li key={el.id}>
-                  <S.SizeButton color={ButtonColor.WHITE}>
-                    {el.size}
-                  </S.SizeButton>
-                </li>
-              );
-            })}
-          </S.SizeList>
-        </p>
-        <p>
-          <S.ColorCategory>색상</S.ColorCategory>
-          <S.ColorList>
-            {ASIDE_COLOR.map(el => {
-              return (
-                <li key={el.id}>
-                  <S.ColorBtn color={el.color} />
-                </li>
-              );
-            })}
-          </S.ColorList>
-        </p>
-        <p>
-          <S.PriceCategory>가격</S.PriceCategory>
-          {ASIDE_PRICE_RANGE.map(el => {
+        <S.SizeCategory>사이즈</S.SizeCategory>
+        <S.SizeList>
+          {ASIDE_SIZE.map(el => {
             return (
-              <S.StyledLabel key={el.id}>
-                <input type="checkbox" /> {el.price_range}
-              </S.StyledLabel>
+              <li key={el.id}>
+                <S.SizeButton>{el.size}</S.SizeButton>
+              </li>
             );
           })}
-        </p>
+        </S.SizeList>
+        <S.ColorCategory>색상</S.ColorCategory>
+        <S.ColorList>
+          {ASIDE_COLOR.map(el => {
+            return (
+              <li key={el.id}>
+                <S.ColorBtn color={el.color} />
+              </li>
+            );
+          })}
+        </S.ColorList>
+        <S.PriceCategory>가격</S.PriceCategory>
+        {ASIDE_PRICE_RANGE.map(el => {
+          return (
+            <S.StyledLabel key={el.id}>
+              <input type="checkbox" /> {el.price_range}
+            </S.StyledLabel>
+          );
+        })}
       </S.ProductAside>
     </S.ProductList>
   );

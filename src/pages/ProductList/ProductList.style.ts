@@ -8,9 +8,12 @@ export const ProductList = styled.div`
 `;
 
 export const ProductAside = styled.aside`
+  position: sticky;
+  top: 0;
+  margin: 0 20px;
   width: 18%;
   height: 40rem;
-  ${({ theme }) => theme.flexBox('space-around', 'center', 'column')}
+  ${({ theme }) => theme.flexBox('space-around', '', 'column')}
 `;
 
 export const SizeCategory = styled.h5`
@@ -21,8 +24,8 @@ export const SizeCategory = styled.h5`
 
 export const SizeList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(4, 3rem);
-  grid-template-rows: repeat(3, 1.8rem);
+  grid-template-columns: repeat(4, 3.5rem);
+  grid-template-rows: repeat(3, 2.5rem);
   grid-gap: 0.5rem;
   justify-items: end;
 `;
