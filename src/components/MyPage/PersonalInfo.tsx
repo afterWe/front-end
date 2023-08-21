@@ -1,11 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import * as S from './PersonalInfo.style';
 import Modal from '../Modal/Modal';
 import AddressEdit from '../Address/AddressEdit';
 import { StyledInput } from '../../Styles/common.style';
+import { RadioButtonGroup, Body1, Body2 } from '@class101/ui';
+// import AddressList from '../Address/AddressList';
+import { Address } from '../../types/components';
 
 const PersonalInfo: FC = title => {
   const [value, setValue] = useState('');
+  const [addressData, setAddressData] = useState<Address[]>([]);
 
   const handleAlert = (value: string) => {
     // console.log(value);
@@ -21,6 +25,16 @@ const PersonalInfo: FC = title => {
     event.preventDefault();
     // console.log(value);
   };
+
+  useEffect(() => {
+    fetch('./data/addressList.json')
+      .then(res => res.json())
+      .then(data => {
+        setAddressData(data);
+      });
+  }, []);
+
+  const handleAddressSelect = () => {};
 
   return (
     <S.PersonalInfo>
@@ -67,15 +81,35 @@ const PersonalInfo: FC = title => {
               />
             </S.ShippingTitle>
             <S.ShippingAddressList>
-              <S.StyledRadioButtonGroup
-                stackingDirection="horizontal"
-                showBorder={false}
-                showDivider
-                onChange={handleAlert}
-              >
-                <S.StyledRadioButton value="test">Option1</S.StyledRadioButton>
-                <S.StyledRadioButton value="test2">Option2</S.StyledRadioButton>
-              </S.StyledRadioButtonGroup>
+              {/* <AddressList /> */}
+              <S.AddressListContainer>
+                <RadioButtonGroup
+                  stackingDirection="vertical"
+                  showBorder={false}
+                  showDivider={false}
+                  onChange={handleAddressSelect}
+                >
+                  {addressData.map(({ id, name, addressDetail }) => (
+                    <S.StyledRadioButton key={id} value={name}>
+                      <S.StyledRadioButtonBox>
+                        <div>
+                          <Body1>{name}</Body1>
+                          <Body2 color="gray">{addressDetail}</Body2>
+                        </div>
+                        <span>
+                          <S.StyledTextButton>수정</S.StyledTextButton>
+                          <Modal
+                            opener={
+                              <S.StyledTextButton>삭제</S.StyledTextButton>
+                            }
+                            contents="삭제하시겠습니까?"
+                          />
+                        </span>
+                      </S.StyledRadioButtonBox>
+                    </S.StyledRadioButton>
+                  ))}
+                </RadioButtonGroup>
+              </S.AddressListContainer>
             </S.ShippingAddressList>
           </S.ShippingAdderssBox>
         </S.PersonalInfoBox>
