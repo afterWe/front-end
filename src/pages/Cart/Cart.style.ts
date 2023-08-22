@@ -6,7 +6,8 @@ import {
   TextButton,
   Headline3,
   Body2,
-  Headline2
+  Headline2,
+  Divider
 } from '@class101/ui';
 
 export const Cart = styled.div`
@@ -97,6 +98,10 @@ export const StyledSelect = styled(Select)`
 
 export const DeleteAndPriceBox = styled.div`
   ${({ theme }) => theme.flexBox('space-between', 'flex-end', 'column')}
+`;
+
+export const StyledDivider = styled(Divider)`
+  color: ${({ theme }) => theme.gray};
 `;
 
 export const OrderListContainer = styled.div`

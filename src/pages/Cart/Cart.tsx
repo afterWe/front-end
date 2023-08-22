@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from 'react';
 import {
   Body1,
   Body2,
-  Divider,
   ButtonColor,
   ButtonSize,
   TrashIcon,
@@ -107,7 +106,7 @@ const Cart: FC = () => {
                           {itemPrice.toLocaleString()} 원
                         </S.DeleteAndPriceBox>
                       </S.CartListGroup>
-                      <Divider color="gray" />
+                      <S.StyledDivider />
                     </>
                   )
                 )}
@@ -118,7 +117,7 @@ const Cart: FC = () => {
           <S.StyledHeadline2>주문 내역</S.StyledHeadline2>
           <S.ProductPriceBox>
             <span>상품금액 :</span>
-            <span>data.toLocaleString()</span>
+            <span>data</span>
           </S.ProductPriceBox>
           <S.ShippingFeeBox>
             <span>배송비 :</span>
@@ -126,7 +125,7 @@ const Cart: FC = () => {
           </S.ShippingFeeBox>
           <S.TotalPriceBox>
             <span>총 결제 금액 :</span>
-            <span>data.toLocaleString()</span>
+            <span>data</span>
           </S.TotalPriceBox>
           <S.CartOrderButtonBox>
             <S.CartOrderButton fill>결제 하기</S.CartOrderButton>
