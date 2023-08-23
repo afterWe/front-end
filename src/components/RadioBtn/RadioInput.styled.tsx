@@ -6,6 +6,7 @@ import {
 
 export const RadioBtnLabel = styled.label<RadioBtnLabelProps>`
   display: flex;
+  width: 20rem;
   align-items: ${({ align }) => (align === 'top' ? 'top' : 'center')};
   margin-bottom: 20px;
 `;

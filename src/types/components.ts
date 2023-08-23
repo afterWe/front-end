@@ -75,6 +75,7 @@ export interface PaymentInformProps {
 
 export interface PaymentShowRecipientProps {
   showRecipient: boolean;
+  width?: string;
 }
 
 export interface SelectColorProps {
@@ -131,4 +132,9 @@ export interface AddressDataProps {
 
 export interface AddressTitleProps {
   showAddressTitle: boolean;
+  showContents: boolean;
+}
+
+export interface AddressEditWidthProps {
+  width?: string;
 }
