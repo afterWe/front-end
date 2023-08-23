@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import * as S from './ChangePw.style';
 import { ButtonSize } from '@class101/ui';
+import { StyledButton, StyledInput } from '../../Styles/common.style';
 
 const ChangePw: FC = () => {
   const [value, setValue] = useState('');
@@ -23,22 +24,31 @@ const ChangePw: FC = () => {
         </S.ChangePwTitleWrap>
         <S.ChangePwBox onSubmit={handleSubmit}>
           <S.InputPasswordWrap>
-            <S.StyledInput
+            <StyledInput
               type="password"
               placeholder="새로운 비밀번호를 입력해주세요."
               onChange={onChange}
+              width="20rem"
+              margin="0 0 0.6rem 0"
               // errorMessage="알파벳 소문자, 숫자, 특수문자를 포함해 8자 이상이어야 합니다."
             />
-            <S.StyledInput
+            <StyledInput
               type="password"
               placeholder="새로운 비밀번호를 한번 더 입력해주세요."
               onChange={onChange}
+              width="20rem"
+              margin="0 0 0.6rem 0"
               // errorMessage="비밀번호가 일치하지 않습니다."
             />
           </S.InputPasswordWrap>
-          <S.StyledButton fill size={ButtonSize.LARGE} margin="2rem">
+          <StyledButton
+            isMargin={false}
+            fill
+            size={ButtonSize.LARGE}
+            margin="2rem"
+          >
             변경
-          </S.StyledButton>
+          </StyledButton>
         </S.ChangePwBox>
       </S.Group>
     </S.ChangePw>

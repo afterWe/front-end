@@ -53,6 +53,11 @@ export interface OrderInfoComponentProps {
   orderDetailData: OrderDetailProps[];
 }
 
+// PaymentDetail 에서 OrderDetailComponent 사용할 때 (보류)
+// export interface PaymentComponentsProps {
+//   orderDetailData: OrderDetailProps[];
+// }
+
 export interface OrderDetailComponentProps {
   orderDetailData: OrderDetailProps[];
 }

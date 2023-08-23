@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import * as S from './OrderDetailComponent.style';
 import { OrderDetailComponentProps } from '../../types/components';
+import * as S from './OrderDetailComponent.style';
 
 const OrderDetailComponent: FC<OrderDetailComponentProps> = ({
   orderDetailData
