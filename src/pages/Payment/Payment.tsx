@@ -1,6 +1,10 @@
 import * as S from './Payment.style';
 import { FC, useEffect, useState } from 'react';
-import { PaymentInformProps, PaymentProps } from '../../types/components';
+import {
+  PaymentInformProps,
+  PaymentProps,
+  PaymentShowRecipientProps
+} from '../../types/components';
 import AddressEdit from '../../components/Address/AddressEdit';
 import Modal from '../../components/Modal/Modal';
 import AddressList from '../../components/Address/AddressList';
@@ -39,7 +43,7 @@ const Payment: FC = () => {
               <Modal
                 opener={<S.DelieveryList>배송지 목록</S.DelieveryList>}
                 title="배송지 추가"
-                contents={<AddressList />}
+                contents={<AddressList showAddressTitle={false} />}
                 successText="확인"
                 modalWidth="40%"
                 onSuccess={() => alert('선택 완료!')}
