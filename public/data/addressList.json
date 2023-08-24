@@ -1,27 +1,47 @@
 [
   {
     "id": 1,
-    "name": "유정인",
-    "addressDetail": "서울 용산구 한강대로 21"
+    "addressName": "우리집",
+    "recipient": "유정인",
+    "phoneNumber": "01065787333",
+    "postCode": 38223,
+    "address": "서울 용산구 한강대로 21",
+    "addressDetail": "1101호"
   },
   {
     "id": 2,
-    "name": "이현아",
-    "addressDetail": "서울 강남구 서초대로 388"
+    "addressName": "너네집",
+    "recipient": "이현아",
+    "phoneNumber": "01052134354",
+    "postCode": 29523,
+    "address": "서울 강남구 서초대로 388",
+    "addressDetail": "1101호"
   },
   {
     "id": 3,
-    "name": "김상중",
-    "addressDetail": "경기도 성남시 분당구 정자동 38"
+    "addressName": "그런집",
+    "recipient": "김상중",
+    "phoneNumber": "01023557394",
+    "postCode": 39956,
+    "address": "경기도 성남시 분당구 정자동 38",
+    "addressDetail": "1101호"
   },
   {
     "id": 4,
-    "name": "김수영",
-    "addressDetail": "서울 강남구 테헤란로 427"
+    "addressName": "예쁜집",
+    "recipient": "김수영",
+    "phoneNumber": "01085590243",
+    "postCode": 10032,
+    "address": "서울 강남구 테헤란로 427",
+    "addressDetail": "1101호"
   },
   {
     "id": 5,
-    "name": "김민재",
-    "addressDetail": "뮌헨 스테디움 락커 2"
+    "addressName": "독일집",
+    "recipient": "김민재",
+    "phoneNumber": "01033333333",
+    "postCode": 34522,
+    "address": "뮌헨 스테디움 락커 2",
+    "addressDetail": "1101호"
   }
 ]
