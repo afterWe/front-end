@@ -17,6 +17,7 @@ export const ProductCardContainer = styled(Button)`
   &:hover {
     cursor: pointer;
     background-color: transparent;
+    filter: brightness(0.9);
   }
 
   span {

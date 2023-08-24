@@ -1,6 +1,8 @@
 import { Button, Colors, Headline3, Subtitle1 } from '@class101/ui';
 import styled from 'styled-components';
 import { ProductCardStyleProps } from '../../types/components';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export const MainBanner = styled.button`
   width: 100%;
@@ -43,12 +45,13 @@ export const BuyMainProduct = styled(Button)`
   }
 `;
 
-export const NewProductWrapper = styled.section`
+export const NewProductWrap = styled.section`
   width: 80%;
-  margin: 0 auto;
+  margin: 8rem auto;
 `;
 
 export const NewProductTitle = styled(Subtitle1)`
+  margin-bottom: 1rem;
   font-size: 1.4rem;
 `;
 

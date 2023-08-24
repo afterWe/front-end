@@ -1,11 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
+import Slider from 'react-slick';
 import * as S from './Main.style';
-import {
-  Carousel,
-  CarouselNavigationPosition,
-  Section,
-  Slide
-} from '@class101/ui';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { ProductCardProps } from '../../types/components';
 
@@ -19,6 +14,16 @@ const Main: FC = () => {
         setNewProductData(data);
       });
   }, []);
+
+  const carouselSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000
+  };
 
   return (
     <main>
@@ -35,25 +40,24 @@ const Main: FC = () => {
         </S.MainProductContents>
         <S.BuyMainProduct>구매하기</S.BuyMainProduct>
       </S.MainProductWrap>
-      {/* <Section title="New Product">
-        <Carousel
-          navigationPosition={CarouselNavigationPosition.TopRightOut}
-          lgSlidesPerView={4}
-          smSlidesPerView={2}
-          pagination
-        >
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(order => (
-            <Slide key={`ViewAllButton-${order}`}>
-              <PlayGroundBanner
-                backgroundColor={Colors[`blue${(((order - 1) % 6) + 1) * 100}`]}
-              >
-                배너{order}
-              </PlayGroundBanner>
-            </Slide>
-          ))}
-        </Carousel>
-      </Section> */}
-      {/* <S.NewProductWrapper></S.NewProductWrapper> */}
+      <S.NewProductWrap>
+        <S.NewProductTitle>New Product</S.NewProductTitle>
+        <Slider {...carouselSettings}>
+          {newProductData &&
+            newProductData.map(product => (
+              <div key={product.id}>
+                <ProductCard
+                  cardWidth="13rem"
+                  cardPadding="2rem"
+                  name={product.name}
+                  price={product.price}
+                  imgUrl={product.imgUrl}
+                  imgAlt={product.imgAlt}
+                />
+              </div>
+            ))}
+        </Slider>
+      </S.NewProductWrap>
     </main>
   );
 };
