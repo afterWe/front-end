@@ -3,15 +3,18 @@ import * as S from './PaymentDetail.style';
 import { OrderItemProps } from '../../types/components';
 import Modal from '../Modal/Modal';
 import OrderDetailComponent from '../Paid/OrderDetailComponent';
-import { OrderInfoProps, OrderDetailProps } from '../../types/components';
+import {
+  OrderInfoDataProps,
+  OrderDetailDataProps
+} from '../../types/components';
 
 const PaymentDetail: FC = () => {
   const [data, setData] = useState<OrderItemProps[]>([]);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
-  const [orderInfoData, setOrderInfoData] = useState<OrderInfoProps[]>([]);
-  const [orderDetailData, setOrderDetailData] = useState<OrderDetailProps[]>(
-    []
-  );
+  const [orderInfoData, setOrderInfoData] = useState<OrderInfoDataProps[]>([]);
+  const [orderDetailData, setOrderDetailData] = useState<
+    OrderDetailDataProps[]
+  >([]);
 
   useEffect(() => {
     fetch('/data/orderInfo.json')

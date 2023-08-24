@@ -2,13 +2,16 @@ import { FC, useEffect, useState } from 'react';
 import * as S from './Paid.style';
 import OrderInfoComponent from '../../components/Paid/OrderInfoComponent';
 import { ButtonSize } from '@class101/ui';
-import { OrderDetailProps, OrderInfoProps } from '../../types/components';
+import {
+  OrderDetailDataProps,
+  OrderInfoDataProps
+} from '../../types/components';
 
 const Paid: FC = () => {
-  const [orderInfoData, setOrderInfoData] = useState<OrderInfoProps[]>([]);
-  const [orderDetailData, setOrderDetailData] = useState<OrderDetailProps[]>(
-    []
-  );
+  const [orderInfoData, setOrderInfoData] = useState<OrderInfoDataProps[]>([]);
+  const [orderDetailData, setOrderDetailData] = useState<
+    OrderDetailDataProps[]
+  >([]);
 
   useEffect(() => {
     fetch('/data/orderInfo.json')

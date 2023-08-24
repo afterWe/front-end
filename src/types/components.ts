@@ -29,7 +29,7 @@ export interface ModalSizeProps {
   width?: string;
 }
 
-export interface OrderInfoProps {
+export interface OrderInfoDataProps {
   id: number;
   date: string;
   delievery: string;
@@ -38,7 +38,7 @@ export interface OrderInfoProps {
   payment_method: string;
 }
 
-export interface OrderDetailProps {
+export interface OrderDetailDataProps {
   id: number;
   image: string;
   title: string;
@@ -50,8 +50,8 @@ export interface OrderDetailProps {
 }
 
 export interface OrderInfoComponentProps {
-  orderInfoData: OrderInfoProps[];
-  orderDetailData: OrderDetailProps[];
+  orderInfoData: OrderInfoDataProps[];
+  orderDetailData: OrderDetailDataProps[];
   onDelievery?: boolean;
 }
 
@@ -61,7 +61,7 @@ export interface OrderInfoComponentProps {
 // }
 
 export interface OrderDetailComponentProps {
-  orderDetailData: OrderDetailProps[];
+  orderDetailData: OrderDetailDataProps[];
 }
 
 export interface PaymentProps {
