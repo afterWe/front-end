@@ -3,14 +3,15 @@ import { SelectColorProps } from '../../types/components';
 import { Colors, Button } from '@class101/ui';
 
 export const ProductList = styled.div`
-  width: 100%;
-  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 3rem;
 `;
 
 export const ProductAside = styled.aside`
   position: sticky;
   top: 0;
-  margin: 0 20px;
+  margin: 0 20px 0 45px;
   width: 18%;
   height: 40rem;
   ${({ theme }) => theme.flexBox('space-around', '', 'column')}
@@ -72,4 +73,18 @@ export const StyledLabel = styled.label`
     cursor: pointer;
     margin-right: 0.7rem;
   }
+`;
+
+export const FilterWrap = styled.section`
+  display: flex;
+  float: right;
+`;
+
+export const ProductListFilter = styled.section``;
+
+export const ProductCardContainer = styled.section``;
+
+export const ProductCardWrap = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 `;
