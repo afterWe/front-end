@@ -1,10 +1,22 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import * as S from './ProductList.style';
-import { ButtonColor, Colors, DarkColors } from '@class101/ui';
+import { ButtonColor, Colors, Select } from '@class101/ui';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { PageContainer } from '../../Styles/common.style';
 
 const ProductList: FC = () => {
+  const [selectedValue, setSelectedValue] = useState('최신순'); // Initial value
+
+  const options = [
+    { label: '최신순', value: '최신순' },
+    { label: '높은가격', value: '높은가격' },
+    { label: '낮은가격', value: '낮은가격' }
+  ];
+
+  const handleSelectChange = (newValue: string) => {
+    setSelectedValue(newValue);
+  };
+
   return (
     <S.ProductList>
       <S.ProductAside>
@@ -45,26 +57,30 @@ const ProductList: FC = () => {
           })}
         </p>
       </S.ProductAside>
-      <PageContainer>
+      <S.PageContainer>
         <S.FilterWrap>
-          <S.ProductListFilter>정렬</S.ProductListFilter>
+          <Select
+            value={selectedValue}
+            options={options}
+            onChange={event => handleSelectChange(event.target.value)}
+          />
         </S.FilterWrap>
         <S.ProductCardContainer>
           <S.ProductCardWrap>
             {Products_List.map((product, index) => (
               <ProductCard
+                cardWidth="250px"
                 key={index}
                 imgUrl={product.imgUrl}
                 imgAlt={product.imgAlt}
                 name={product.name}
                 price={product.price}
-                cardPadding={product.cardPadding}
-                cardWidth={product.cardWidth}
+                cardPadding="10px 10px 40px 10px"
               />
             ))}
           </S.ProductCardWrap>
         </S.ProductCardContainer>
-      </PageContainer>
+      </S.PageContainer>
     </S.ProductList>
   );
 };
@@ -106,48 +122,48 @@ const Products_List = [
     imgUrl: '/images/nike.jpg',
     imgAlt: 'Product Image 1',
     name: 'Product Name 1',
-    price: '50,000',
-    cardPadding: '10px',
-    cardWidth: '200px'
+    price: '50,000'
   },
   {
     imgUrl: '/images/nike.jpg',
     imgAlt: 'Product Image 2',
     name: 'Product Name 2',
-    price: '75,000',
-    cardPadding: '10px',
-    cardWidth: '200px'
+    price: '75,000'
   },
   {
     imgUrl: '/images/nike.jpg',
     imgAlt: 'Product Image 3',
     name: 'Product Name 3',
-    price: '130,000',
-    cardPadding: '10px',
-    cardWidth: '200px'
+    price: '130,000'
   },
   {
     imgUrl: '/images/nike.jpg',
     imgAlt: 'Product Image 4',
     name: 'Product Name 4',
-    price: '99,000',
-    cardPadding: '10px',
-    cardWidth: '200px'
+    price: '99,000'
   },
   {
     imgUrl: '/images/nike.jpg',
     imgAlt: 'Product Image 5',
     name: 'Product Name 5',
-    price: '129,000',
-    cardPadding: '10px',
-    cardWidth: '200px'
+    price: '129,000'
   },
   {
     imgUrl: '/images/nike.jpg',
     imgAlt: 'Product Image 6',
     name: 'Product Name 6',
-    price: '89,000',
-    cardPadding: '10px',
-    cardWidth: '200px'
+    price: '89,000'
+  },
+  {
+    imgUrl: '/images/nike.jpg',
+    imgAlt: 'Product Image 7',
+    name: 'Product Name 7',
+    price: '50,000'
+  },
+  {
+    imgUrl: '/images/nike.jpg',
+    imgAlt: 'Product Image 8',
+    name: 'Product Name 8',
+    price: '75,000'
   }
 ];

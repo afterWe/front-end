@@ -145,3 +145,6 @@ export interface AddressTitleProps {
 export interface AddressEditWidthProps {
   width?: string;
 }
+export interface BoldTextProps {
+  isBold: boolean;
+}
