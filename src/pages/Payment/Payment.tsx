@@ -43,7 +43,9 @@ const Payment: FC = () => {
               <Modal
                 opener={<S.DelieveryList>배송지 목록</S.DelieveryList>}
                 title="배송지 추가"
-                contents={<AddressList showAddressTitle={false} />}
+                contents={
+                  <AddressList showAddressTitle={false} showContents={true} />
+                }
                 successText="확인"
                 modalWidth="40%"
                 onSuccess={() => alert('선택 완료!')}
