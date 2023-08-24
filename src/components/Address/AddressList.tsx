@@ -22,6 +22,8 @@ const AddressList: FC<AddressTitleProps> = ({
 
   const handleRadioChange = (selectedValue: string) => {};
 
+  console.log(addressData);
+
   return (
     <S.AddressList>
       {showAddressTitle ? (
@@ -30,7 +32,7 @@ const AddressList: FC<AddressTitleProps> = ({
           <Modal
             opener={<S.StyledTextButton>배송지추가</S.StyledTextButton>}
             title="배송지 추가"
-            contents={<AddressEdit showRecipient={true} />}
+            contents={<AddressEdit data={false} showRecipient={true} />}
             successText="확인"
             cancelText="취소"
             modalWidth="30rem"
@@ -52,15 +54,17 @@ const AddressList: FC<AddressTitleProps> = ({
       )}
       {showContents ? (
         <S.AddressListContainer>
-          {addressData.map(({ id, name, addressDetail }) => (
-            <S.StyledRadioBtn key={id}>
+          {addressData.map(addressItem => (
+            <S.StyledRadioBtn key={addressItem.id}>
               <RadioBtn
-                value={name}
+                value={addressItem.recipient || ''}
                 name="address"
                 contents={
                   <>
-                    <S.StyledBody1>{name}</S.StyledBody1>
-                    <Body2 color="gray">{addressDetail}</Body2>
+                    <S.StyledBody1>{addressItem.recipient}</S.StyledBody1>
+                    <Body2 color="gray">
+                      {addressItem.address} {addressItem.addressDetail}
+                    </Body2>
                   </>
                 }
                 align="top"
@@ -68,7 +72,20 @@ const AddressList: FC<AddressTitleProps> = ({
                 btnMargin="3px"
               />
               <div>
-                <S.StyledTextButton>수정</S.StyledTextButton>
+                <Modal
+                  opener={<S.StyledTextButton>수정</S.StyledTextButton>}
+                  title="배송지 추가"
+                  contents={
+                    <AddressEdit
+                      addressData={addressItem}
+                      data={true}
+                      showRecipient={true}
+                    />
+                  }
+                  successText="확인"
+                  cancelText="취소"
+                  modalWidth="30rem"
+                />
                 <S.StyledTextButton>삭제</S.StyledTextButton>
               </div>
             </S.StyledRadioBtn>

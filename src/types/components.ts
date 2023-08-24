@@ -75,7 +75,18 @@ export interface PaymentInformProps {
 
 export interface PaymentShowRecipientProps {
   showRecipient: boolean;
+  data?: boolean;
   width?: string;
+  name?: string;
+  addressData?: {
+    id?: number;
+    addressName?: string;
+    recipient?: string;
+    phoneNumber?: string;
+    postCode?: number;
+    address?: string;
+    addressDetail?: string;
+  };
 }
 
 export interface SelectColorProps {
@@ -125,9 +136,13 @@ export interface OrderItemProps {
 }
 
 export interface AddressDataProps {
-  id: number;
-  name: string;
-  addressDetail: string;
+  id?: number;
+  addressName?: string;
+  recipient?: string;
+  phoneNumber?: string;
+  postCode?: number;
+  address?: string;
+  addressDetail?: string;
 }
 
 export interface AddressTitleProps {
