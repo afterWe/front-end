@@ -71,7 +71,7 @@ const AddressList: FC<AddressTitleProps> = ({
                 onChange={handleRadioChange}
                 btnMargin="3px"
               />
-              <div>
+              <S.AddressEditBox>
                 <Modal
                   opener={<S.StyledTextButton>수정</S.StyledTextButton>}
                   title="배송지 추가"
@@ -87,7 +87,7 @@ const AddressList: FC<AddressTitleProps> = ({
                   modalWidth="30rem"
                 />
                 <S.StyledTextButton>삭제</S.StyledTextButton>
-              </div>
+              </S.AddressEditBox>
             </S.StyledRadioBtn>
           ))}
         </S.AddressListContainer>

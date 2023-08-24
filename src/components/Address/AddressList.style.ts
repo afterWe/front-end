@@ -35,3 +35,7 @@ export const StyledRadioBtn = styled.div`
 export const StyledBody1 = styled(Body1)`
   text-align: left;
 `;
+
+export const AddressEditBox = styled.div`
+  display: flex;
+`;
