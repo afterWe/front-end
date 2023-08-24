@@ -29,14 +29,16 @@ const AddressEdit: FC<PaymentShowRecipientProps> = ({
         label="휴대폰번호 *"
         // errorMessage='휴대폰번호를 입력해주세요.'
       />
-      <S.StyledCheckBox>
-        <Checkbox
-          checked={isChecked}
-          size={14}
-          onChange={() => setIsChecked(!isChecked)}
-        />
-        <Caption1>기본배송지 저장</Caption1>
-      </S.StyledCheckBox>
+      {!showRecipient && (
+        <S.StyledCheckBox>
+          <Checkbox
+            checked={isChecked}
+            size={14}
+            onChange={() => setIsChecked(!isChecked)}
+          />
+          <Caption1>기본배송지 저장</Caption1>
+        </S.StyledCheckBox>
+      )}
       <S.StyledBox>
         <StyledInput
           width="100%"
