@@ -1,6 +1,8 @@
 import * as S from './Payment.style';
 import { FC, useEffect, useState } from 'react';
 import {
+  OrderDetailProps,
+  OrderInfoProps,
   PaymentInformProps,
   PaymentProps,
   PaymentShowRecipientProps
@@ -9,6 +11,7 @@ import AddressEdit from '../../components/Address/AddressEdit';
 import Modal from '../../components/Modal/Modal';
 import AddressList from '../../components/Address/AddressList';
 import RadioBtn from '../../components/RadioBtn/RadioInput';
+import OrderInfoComponent from '../../components/Paid/OrderInfoComponent';
 
 const Payment: FC = () => {
   const [paymentOrderList, setPaymentOrderList] = useState<PaymentProps[]>([]);
@@ -30,6 +33,21 @@ const Payment: FC = () => {
     console.log(selectedValue);
   };
 
+  const [orderInfoData, setOrderInfoData] = useState<OrderInfoProps[]>([]);
+  const [orderDetailData, setOrderDetailData] = useState<OrderDetailProps[]>(
+    []
+  );
+
+  useEffect(() => {
+    fetch('/data/orderInfo.json')
+      .then(res => res.json())
+      .then(data => setOrderInfoData(data));
+
+    fetch('/data/orderDetail.json')
+      .then(res => res.json())
+      .then(data => setOrderDetailData(data));
+  }, []);
+
   return (
     <S.Payment>
       <S.HeadlineBox>
@@ -44,7 +62,12 @@ const Payment: FC = () => {
                 opener={<S.DelieveryList>배송지 목록</S.DelieveryList>}
                 title="배송지 추가"
                 contents={
-                  <AddressList showAddressTitle={false} showContents={true} />
+                  // <AddressList showAddressTitle={false} showContents={true} />
+                  <OrderInfoComponent
+                    orderInfoData={orderInfoData}
+                    orderDetailData={orderDetailData}
+                    onDelievery={false}
+                  />
                 }
                 successText="확인"
                 modalWidth="40%"

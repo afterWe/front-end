@@ -2,6 +2,7 @@
   {
     "id": 1,
     "date": "2023.03.23",
+    "delievery": "배송중",
     "address": "서울 은평구 진관 4로 48-51, 101호 ",
     "price": "567000",
     "payment_method": "kakao-pay"
