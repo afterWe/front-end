@@ -4,11 +4,15 @@ import { OrderInfoComponentProps } from '../../types/components';
 
 const OrderInfoComponent: React.FC<OrderInfoComponentProps> = ({
   orderInfoData,
-  orderDetailData
+  orderDetailData,
+  onDelievery
 }) => {
   return (
     <ul>
       <S.Order>주문 날짜 : {orderInfoData[0]?.date}</S.Order>
+      {onDelievery && (
+        <S.Order>배송 상태 : {orderInfoData[0]?.delievery} </S.Order>
+      )}
       <S.Order>배송지 정보 : {orderInfoData[0]?.address}</S.Order>
       <S.Order>최종 결제 금액 : {orderInfoData[0]?.price}원</S.Order>
       <S.Order>

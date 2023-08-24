@@ -32,6 +32,7 @@ export interface ModalSizeProps {
 export interface OrderInfoProps {
   id: number;
   date: string;
+  delievery: string;
   address: string;
   price: string;
   payment_method: string;
@@ -51,6 +52,7 @@ export interface OrderDetailProps {
 export interface OrderInfoComponentProps {
   orderInfoData: OrderInfoProps[];
   orderDetailData: OrderDetailProps[];
+  onDelievery?: boolean;
 }
 
 // PaymentDetail 에서 OrderDetailComponent 사용할 때 (보류)
