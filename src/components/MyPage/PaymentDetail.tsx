@@ -1,10 +1,27 @@
 import React, { FC, useState, useEffect } from 'react';
 import * as S from './PaymentDetail.style';
 import { OrderItemProps } from '../../types/components';
+import Modal from '../Modal/Modal';
+import OrderDetailComponent from '../Paid/OrderDetailComponent';
+import { OrderInfoProps, OrderDetailProps } from '../../types/components';
 
 const PaymentDetail: FC = () => {
   const [data, setData] = useState<OrderItemProps[]>([]);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [orderInfoData, setOrderInfoData] = useState<OrderInfoProps[]>([]);
+  const [orderDetailData, setOrderDetailData] = useState<OrderDetailProps[]>(
+    []
+  );
+
+  useEffect(() => {
+    fetch('/data/orderInfo.json')
+      .then(res => res.json())
+      .then(data => setOrderInfoData(data));
+
+    fetch('/data/orderDetail.json')
+      .then(res => res.json())
+      .then(data => setOrderDetailData(data));
+  }, []);
 
   useEffect(() => {
     fetch('./data/payment.json')
@@ -43,7 +60,16 @@ const PaymentDetail: FC = () => {
                     <td>{item.orderNum}</td>
                     <td>{item.product}</td>
                     <td>
-                      <S.DetailButton>상세보기</S.DetailButton>
+                      <Modal
+                        opener={<S.DetailButton>상세보기</S.DetailButton>}
+                        contents={
+                          <OrderDetailComponent
+                            orderDetailData={orderDetailData}
+                          />
+                        }
+                        title="주문번호 20230314 - 1234532456"
+                        successText="확인"
+                      />
                     </td>
                   </tr>
                 );

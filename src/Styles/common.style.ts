@@ -12,7 +12,6 @@ export const StyledButton = styled(Button)<StyledButtonProps>`
   background: ${theme.gray};
   font-size: 1rem;
   font-weight: 500;
-
   &:hover {
     background: ${Colors.gray500};
     border-color: ${Colors.gray500};

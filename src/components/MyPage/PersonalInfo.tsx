@@ -1,19 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
 import * as S from './PersonalInfo.style';
-import Modal from '../Modal/Modal';
-import AddressEdit from '../Address/AddressEdit';
 import { StyledInput } from '../../Styles/common.style';
-import { RadioButtonGroup, Body1, Body2 } from '@class101/ui';
-// import AddressList from '../Address/AddressList';
-import { Address } from '../../types/components';
+import { AddressDataProps } from '../../types/components';
+import AddressList from '../Address/AddressList';
 
 const PersonalInfo: FC = title => {
   const [value, setValue] = useState('');
-  const [addressData, setAddressData] = useState<Address[]>([]);
-
-  const handleAlert = (value: string) => {
-    // console.log(value);
-  };
+  const [addressData, setAddressData] = useState<AddressDataProps[]>([]);
 
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     const {
@@ -34,8 +27,6 @@ const PersonalInfo: FC = title => {
       });
   }, []);
 
-  const handleAddressSelect = () => {};
-
   return (
     <S.PersonalInfo>
       <S.Group>
@@ -48,13 +39,16 @@ const PersonalInfo: FC = title => {
               label="이름 *"
               placeholder="이솜이"
               onChange={onChange}
+              disabled
               width="40rem"
               margin="0 0 1rem 0"
+              // text-align="center"
             />
             <StyledInput
               label="전화번호 *"
               placeholder="010-1234-5678"
               onChange={onChange}
+              disabled
               width="40rem"
               margin="0 0 1rem 0"
             />
@@ -62,6 +56,7 @@ const PersonalInfo: FC = title => {
               label="아이디 *"
               placeholder="dlthadl2@naver.com"
               onChange={onChange}
+              disabled
               width="40rem"
               margin-bottom="1rem"
             />
@@ -71,46 +66,7 @@ const PersonalInfo: FC = title => {
             </S.ButtonBox>
           </S.InputBox>
           <S.ShippingAdderssBox>
-            <S.ShippingTitle>
-              <S.AddressList>배송지 목록</S.AddressList>
-              <Modal
-                opener={<S.AddAddress>배송지 추가</S.AddAddress>}
-                contents={<AddressEdit showRecipient={false} />}
-                title="배송지 추가(수정)"
-                successText="저장"
-              />
-            </S.ShippingTitle>
-            <S.ShippingAddressList>
-              {/* <AddressList /> */}
-              <S.AddressListContainer>
-                <RadioButtonGroup
-                  stackingDirection="vertical"
-                  showBorder={false}
-                  showDivider={false}
-                  onChange={handleAddressSelect}
-                >
-                  {addressData.map(({ id, name, addressDetail }) => (
-                    <S.StyledRadioButton key={id} value={name}>
-                      <S.StyledRadioButtonBox>
-                        <div>
-                          <Body1>{name}</Body1>
-                          <Body2 color="gray">{addressDetail}</Body2>
-                        </div>
-                        <span>
-                          <S.StyledTextButton>수정</S.StyledTextButton>
-                          <Modal
-                            opener={
-                              <S.StyledTextButton>삭제</S.StyledTextButton>
-                            }
-                            contents="삭제하시겠습니까?"
-                          />
-                        </span>
-                      </S.StyledRadioButtonBox>
-                    </S.StyledRadioButton>
-                  ))}
-                </RadioButtonGroup>
-              </S.AddressListContainer>
-            </S.ShippingAddressList>
+            <AddressList showAddressTitle={true} showContents={true} />
           </S.ShippingAdderssBox>
         </S.PersonalInfoBox>
       </S.Group>
