@@ -163,3 +163,10 @@ export interface AddressEditWidthProps {
 export interface BoldTextProps {
   isBold: boolean;
 }
+export interface PaginationProps {
+  data: {
+    total_pages: number;
+  };
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+}
