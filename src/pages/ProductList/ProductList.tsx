@@ -2,10 +2,11 @@ import { FC, useState } from 'react';
 import * as S from './ProductList.style';
 import { ButtonColor, Colors, Select } from '@class101/ui';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { PageContainer } from '../../Styles/common.style';
+import { Link, useParams } from 'react-router-dom';
 
 const ProductList: FC = () => {
   const [selectedValue, setSelectedValue] = useState('최신순'); // Initial value
+  const params = useParams();
 
   const options = [
     { label: '최신순', value: '최신순' },
@@ -20,6 +21,17 @@ const ProductList: FC = () => {
   return (
     <S.ProductList>
       <S.ProductAside>
+        <S.ListTitle>
+          {params.id === 'new'
+            ? 'New'
+            : params.id === 'clothing'
+            ? 'Clothing'
+            : params.id === 'shoes'
+            ? 'Shoes'
+            : params.id === 'items'
+            ? 'Items'
+            : null}
+        </S.ListTitle>
         <p>
           <S.SizeCategory>사이즈</S.SizeCategory>
           <S.SizeList>
@@ -69,13 +81,14 @@ const ProductList: FC = () => {
           <S.ProductCardWrap>
             {Products_List.map((product, index) => (
               <ProductCard
-                cardWidth="250px"
                 key={index}
+                cardWidth="250px"
                 imgUrl={product.imgUrl}
                 imgAlt={product.imgAlt}
                 name={product.name}
                 price={product.price}
                 cardPadding="10px 10px 40px 10px"
+                index={index}
               />
             ))}
           </S.ProductCardWrap>

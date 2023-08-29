@@ -127,6 +127,7 @@ export interface ProductCardProps {
   price: string;
   cardPadding?: string;
   cardWidth: string;
+  index?: number;
 }
 
 export interface ProductCardStyleProps {
@@ -162,4 +163,11 @@ export interface AddressEditWidthProps {
 }
 export interface BoldTextProps {
   isBold: boolean;
+}
+export interface PaginationProps {
+  data: {
+    total_pages: number;
+  };
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
 }
