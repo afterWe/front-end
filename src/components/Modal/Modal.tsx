@@ -48,7 +48,9 @@ const Modal: FC<ModalProps> = ({
               {typeof contents === 'string' && (
                 <S.BodyText>{contents}</S.BodyText>
               )}
-              {typeof contents !== 'string' && <div>{contents}</div>}
+              {typeof contents !== 'string' && (
+                <S.BodyContent>{contents}</S.BodyContent>
+              )}
             </S.BodyLayer>
             <S.FooterLayer>
               {/* successText 정의 시 추가되는 버튼입니다.

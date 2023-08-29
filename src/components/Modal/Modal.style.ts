@@ -57,6 +57,10 @@ export const BodyText = styled.p`
   word-break: break-all;
 `;
 
+export const BodyContent = styled.p`
+  text-align: initial;
+`;
+
 export const FooterLayer = styled.div`
   display: flex;
   gap: 10px;
