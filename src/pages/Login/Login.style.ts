@@ -20,6 +20,8 @@ export const LoginContainer = styled.div`
   width: 30rem;
 `;
 
+export const Onsubmit = styled.form``;
+
 export const InputPasswordWrap = styled.div`
   ${({ theme }) => theme.positionBox('relative')};
 `;

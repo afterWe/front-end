@@ -1,7 +1,7 @@
-import { Colors } from '@class101/ui';
 import React, { FC } from 'react';
-import * as S from './style/Header.style';
 import { Link } from 'react-router-dom';
+import { Colors } from '@class101/ui';
+import * as S from './style/Header.style';
 
 const Header: FC = () => {
   return (
