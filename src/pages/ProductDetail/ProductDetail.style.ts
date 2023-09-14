@@ -114,8 +114,7 @@ export const SelectColorBtn = styled.button<SelectColorProps>`
   height: 23px;
   margin-right: 0.9rem;
   background-color: ${({ color }) => color};
-  border: ${props =>
-    props.color === Colors.white ? '1px solid black' : 'none'};
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
 
   &:hover {

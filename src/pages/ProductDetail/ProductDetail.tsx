@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Modal from '../../components/Modal/Modal';
 import * as S from './ProductDetail.style';
 import {
@@ -12,8 +12,62 @@ import {
   ButtonIconPosition
 } from '@class101/ui';
 import { theme } from '../../Styles/theme';
+import { ProductDetailProps } from '../../types/components';
 
 const ProductDetail: FC = () => {
+  const [isSelected, setIsSelected] = useState({
+    size: '',
+    color: ''
+  });
+
+  console.log(isSelected);
+
+  const [productData, setProductData] = useState<ProductDetailProps>({
+    productId: 0,
+    categoryName: '',
+    serialNumber: '',
+    name: '',
+    price: 0,
+    color: '',
+    findSize: [],
+    colors: [],
+    imageInfo: []
+  });
+
+  async function fetchProductData() {
+    try {
+      const response = await fetch('/data/productDetail.json');
+      const data = await response.json();
+      setProductData(data);
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchProductData();
+  }, []);
+
+  const {
+    productId,
+    categoryName,
+    serialNumber,
+    name,
+    price,
+    color,
+    findSize,
+    colors,
+    imageInfo
+  } = productData;
+
+  const onChangeColor = (e: any) => {
+    const selectedColor = e.target.attributes.color.value;
+    setIsSelected(prevProductData => ({
+      ...prevProductData,
+      color: selectedColor
+    }));
+  };
+
   return (
     <S.ProductDetail>
       <S.ProductDetailUpperContainer>
@@ -43,22 +97,19 @@ const ProductDetail: FC = () => {
         </S.ProductDetailImgWrap>
         <S.ProductDetailWrap>
           <p>
-            <S.ProductName>나이키 에어 포스 1 '07</S.ProductName>
-            <S.Category>여성 신발</S.Category>
-            <S.Price>139,000 원</S.Price>
+            <S.ProductName>{name}</S.ProductName>
+            <S.Category>
+              {categoryName} / {serialNumber}
+            </S.Category>
+            <S.Price>{price.toLocaleString()} 원</S.Price>
           </p>
           <p>
             <S.Category>색상 선택</S.Category>
             <S.SelectColorList>
-              {SELECT_COLOR.map(color => {
+              {colors?.map((color, idx) => {
                 return (
-                  <li key={color.id}>
-                    <S.SelectColorBtn color={color.color} />
-                    {/* {color.title === 'white' ? (
-                      <S.CheckedColorBtnWhite fillColor="black" />
-                    ) : (
-                      <S.CheckedColorBtn fillColor={color.color} />
-                    )} */}
+                  <li key={idx}>
+                    <S.SelectColorBtn onClick={onChangeColor} color={color} />
                   </li>
                 );
               })}
@@ -67,10 +118,10 @@ const ProductDetail: FC = () => {
           <p>
             <S.Category>사이즈 선택</S.Category>
             <S.SelectSizeList>
-              {SELECT_SIZE.map(size => {
+              {findSize?.map(({ sizeId, sizes }) => {
                 return (
-                  <li key={size.id}>
-                    <S.SelectSizeBtn>{size.size}</S.SelectSizeBtn>
+                  <li key={sizeId}>
+                    <S.SelectSizeBtn>{sizes}</S.SelectSizeBtn>
                   </li>
                 );
               })}
@@ -182,49 +233,3 @@ const ProductDetail: FC = () => {
 };
 
 export default ProductDetail;
-
-const SELECT_COLOR = [
-  {
-    id: 1,
-    title: 'white',
-    color: Colors.white
-  },
-  {
-    id: 2,
-    title: 'black',
-    color: Colors.black
-  },
-  {
-    id: 3,
-    title: 'red',
-    color: Colors.red600
-  },
-  {
-    id: 4,
-    title: 'yellow',
-    color: Colors.yellow400
-  },
-  {
-    id: 5,
-    title: 'green',
-    color: Colors.green600
-  },
-  {
-    id: 6,
-    title: 'blue',
-    color: Colors.blue600
-  }
-];
-
-const SELECT_SIZE = [
-  { id: 1, size: 220 },
-  { id: 2, size: 230 },
-  { id: 3, size: 240 },
-  { id: 4, size: 250 },
-  { id: 5, size: 260 },
-  { id: 6, size: 270 },
-  { id: 7, size: 280 },
-  { id: 8, size: 290 },
-  { id: 9, size: 300 },
-  { id: 10, size: 310 }
-];
