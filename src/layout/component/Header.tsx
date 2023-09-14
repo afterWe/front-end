@@ -13,12 +13,15 @@ const Header: FC = () => {
           </Link>
         </S.StyledBtn>
       </S.MainLogo>
+
       <S.Nav>
         <S.NavList>
           {NAV_LIST.map(list => {
             return (
               <li key={list.id}>
-                <S.StyledBtn color={Colors.blue700}>{list.name}</S.StyledBtn>
+                <Link to={list.router}>
+                  <S.StyledBtn color={Colors.blue700}>{list.name}</S.StyledBtn>
+                </Link>
               </li>
             );
           })}
@@ -42,10 +45,10 @@ const Header: FC = () => {
 export default Header;
 
 const NAV_LIST = [
-  { id: 1, name: 'NEW', router: '/' },
-  { id: 2, name: 'Clothing', router: '/' },
-  { id: 3, name: 'Shoes', router: '/' },
-  { id: 4, name: 'Items', router: '/' }
+  { id: 1, name: 'NEW', router: '/product-list/new' },
+  { id: 2, name: 'Clothing', router: '/product-list/clothing' },
+  { id: 3, name: 'Shoes', router: '/product-list/shoes' },
+  { id: 4, name: 'Items', router: '/product-list/items' }
 ];
 
 const MENU_LIST = [

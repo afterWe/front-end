@@ -16,6 +16,7 @@ export const HeaderContainer = styled.header`
 `;
 
 export const MainLogo = styled.h1`
+  position: relative;
   width: 13%;
   cursor: pointer;
 

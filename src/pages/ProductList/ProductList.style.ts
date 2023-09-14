@@ -16,6 +16,11 @@ export const ProductAside = styled.aside`
   ${({ theme }) => theme.flexBox('space-around', '', 'column')}
 `;
 
+export const ListTitle = styled.h3`
+  font-size: 18px;
+  font-weight: 600;
+`;
+
 export const SizeCategory = styled.h5`
   margin: 1.5rem 0;
   font-size: 18px;
