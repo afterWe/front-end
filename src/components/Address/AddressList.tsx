@@ -86,7 +86,13 @@ const AddressList: FC<AddressTitleProps> = ({
                   cancelText="취소"
                   modalWidth="30rem"
                 />
-                <S.StyledTextButton>삭제</S.StyledTextButton>
+                <Modal
+                  opener={<S.StyledTextButton>삭제</S.StyledTextButton>}
+                  title=""
+                  contents="삭제하시겠습니까?"
+                  successText="확인"
+                  cancelText="취소"
+                />
               </S.AddressEditBox>
             </S.StyledRadioBtn>
           ))}
