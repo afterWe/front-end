@@ -174,6 +174,7 @@ export interface PaginationProps {
   currentPage: number;
   setCurrentPage: (page: number) => void;
 }
+
 export interface Size {
   sizeId: number;
   sizes: string;
@@ -200,4 +201,16 @@ export interface ProductDetailProps {
 export interface LoginProps {
   email: string;
   password: string;
+}
+
+// 카카오주소
+// declare global {
+//   interface Window {
+//     daum: any;
+//   }
+// }
+
+export interface IAddr {
+  address: string;
+  zonecode: string;
 }
