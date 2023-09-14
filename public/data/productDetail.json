@@ -1,0 +1,65 @@
+{
+  "productId": 70,
+  "categoryName": "clothes",
+  "serialNumber": "c11",
+  "name": "Male sleeveless",
+  "price": 40000,
+  "color": "white",
+  "findSize": [
+    {
+      "sizeId": 11,
+      "sizes": "S"
+    },
+    {
+      "sizeId": 12,
+      "sizes": "M"
+    },
+    {
+      "sizeId": 13,
+      "sizes": "L"
+    },
+    {
+      "sizeId": 14,
+      "sizes": "XL"
+    }
+  ],
+  "colors": ["white", "black"],
+  "imageInfo": [
+    {
+      "productIdByImage": 70,
+      "serialNumber": "c11",
+      "colorName": "white",
+      "url": "https://i.ibb.co/FVcrNwF/c11-1white-1.png"
+    },
+    {
+      "productIdByImage": 70,
+      "serialNumber": "c11",
+      "colorName": "white",
+      "url": "https://i.ibb.co/Yk7sCVg/c11-1white-2.png"
+    },
+    {
+      "productIdByImage": 70,
+      "serialNumber": "c11",
+      "colorName": "white",
+      "url": "https://i.ibb.co/y4f3WDw/c11-1white-3.png"
+    },
+    {
+      "productIdByImage": 71,
+      "serialNumber": "c11",
+      "colorName": "black",
+      "url": "https://i.ibb.co/7zYdFJG/c11-3black-1.png"
+    },
+    {
+      "productIdByImage": 71,
+      "serialNumber": "c11",
+      "colorName": "black",
+      "url": "https://i.ibb.co/WnLXxty/c11-3black-2.png"
+    },
+    {
+      "productIdByImage": 71,
+      "serialNumber": "c11",
+      "colorName": "black",
+      "url": "https://i.ibb.co/kDzL9HJ/c11-3black-3.png"
+    }
+  ]
+}

@@ -161,13 +161,39 @@ export interface AddressTitleProps {
 export interface AddressEditWidthProps {
   width?: string;
 }
+
 export interface BoldTextProps {
   isBold: boolean;
 }
+
 export interface PaginationProps {
   data: {
     total_pages: number;
   };
   currentPage: number;
   setCurrentPage: (page: number) => void;
+}
+
+export interface Size {
+  sizeId: number;
+  sizes: string;
+}
+
+export interface ImageInfo {
+  productIdByImage: number;
+  serialNumber: string;
+  colorName: string;
+  url: string;
+}
+
+export interface ProductDetailProps {
+  productId: number;
+  categoryName: string;
+  serialNumber: string;
+  name: string;
+  price: number;
+  color?: string;
+  findSize?: Size[];
+  colors?: string[];
+  imageInfo: ImageInfo[];
 }

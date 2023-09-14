@@ -13,7 +13,6 @@ const Header: FC = () => {
           </Link>
         </S.StyledBtn>
       </S.MainLogo>
-
       <S.Nav>
         <S.NavList>
           {NAV_LIST.map(list => {
