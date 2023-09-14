@@ -52,11 +52,18 @@ export const SubImg = styled.button`
   background-size: cover;
   background-repeat: no-repeat;
   border: none;
-  border-radius: 5px;
+  padding: 0;
 
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const ImgBox = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
 `;
 
 export const MainImgGroup = styled.div`
