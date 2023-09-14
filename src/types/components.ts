@@ -195,5 +195,5 @@ export interface ProductDetailProps {
   color?: string;
   findSize?: Size[];
   colors?: string[];
-  imageInfo: ImageInfo[];
+  imageInfo: [];
 }
