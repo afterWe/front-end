@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from 'react';
 import Modal from '../../components/Modal/Modal';
 import * as S from './ProductDetail.style';
 import {
-  Colors,
   StarOutlineIcon,
   StarIcon,
   Reply,
@@ -19,8 +18,6 @@ const ProductDetail: FC = () => {
     size: '',
     color: ''
   });
-
-  console.log(isSelected);
 
   const [productData, setProductData] = useState<ProductDetailProps>({
     productId: 0,
@@ -48,23 +45,28 @@ const ProductDetail: FC = () => {
     fetchProductData();
   }, []);
 
+  useEffect(() => {
+    setIsSelected(prevProductData => ({
+      ...prevProductData,
+      color: productData.color || ''
+    }));
+  }, [productData]);
+
   const {
-    productId,
     categoryName,
     serialNumber,
     name,
     price,
-    color,
     findSize,
     colors,
     imageInfo
   } = productData;
 
-  const onChangeColor = (e: any) => {
-    const selectedColor = e.target.attributes.color.value;
+  const onSelectionChange = (e: any, property: string) => {
+    const selectedValue = e.target.value || e.target.innerText;
     setIsSelected(prevProductData => ({
       ...prevProductData,
-      color: selectedColor
+      [property]: selectedValue
     }));
   };
 
@@ -73,21 +75,16 @@ const ProductDetail: FC = () => {
       <S.ProductDetailUpperContainer>
         <S.ProductDetailImgWrap>
           <S.SubImgGroup>
-            <S.SubImgBox>
-              <S.SubImg
-                style={{ backgroundImage: `url('/images/nike.jpg')` }}
-              />
-            </S.SubImgBox>
-            <S.SubImgBox>
-              <S.SubImg
-                style={{ backgroundImage: `url('/images/nike.jpg')` }}
-              />
-            </S.SubImgBox>
-            <S.SubImgBox>
-              <S.SubImg
-                style={{ backgroundImage: `url('/images/nike.jpg')` }}
-              />
-            </S.SubImgBox>
+            {imageInfo.map(
+              ({ url, colorName }, index) =>
+                colorName === isSelected.color && (
+                  <S.SubImgBox key={index}>
+                    <S.SubImg>
+                      <S.ImgBox src={url} alt="product" />
+                    </S.SubImg>
+                  </S.SubImgBox>
+                )
+            )}
           </S.SubImgGroup>
           <S.MainImgGroup>
             <S.MainImgBox>
@@ -109,7 +106,11 @@ const ProductDetail: FC = () => {
               {colors?.map((color, idx) => {
                 return (
                   <li key={idx}>
-                    <S.SelectColorBtn onClick={onChangeColor} color={color} />
+                    <S.SelectColorBtn
+                      onClick={(e: any) => onSelectionChange(e, 'color')}
+                      value={color}
+                      color={color}
+                    />
                   </li>
                 );
               })}
@@ -120,7 +121,10 @@ const ProductDetail: FC = () => {
             <S.SelectSizeList>
               {findSize?.map(({ sizeId, sizes }) => {
                 return (
-                  <li key={sizeId}>
+                  <li
+                    key={sizeId}
+                    onClick={(e: any) => onSelectionChange(e, 'size')}
+                  >
                     <S.SelectSizeBtn>{sizes}</S.SelectSizeBtn>
                   </li>
                 );
