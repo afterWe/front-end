@@ -127,6 +127,7 @@ export interface ProductCardProps {
   price: string;
   cardPadding?: string;
   cardWidth: string;
+  index?: number;
 }
 
 export interface ProductCardStyleProps {

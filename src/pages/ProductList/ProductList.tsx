@@ -80,16 +80,16 @@ const ProductList: FC = () => {
         <S.ProductCardContainer>
           <S.ProductCardWrap>
             {Products_List.map((product, index) => (
-              <Link key={index} to={`/product-detail/${index}`}>
-                <ProductCard
-                  cardWidth="250px"
-                  imgUrl={product.imgUrl}
-                  imgAlt={product.imgAlt}
-                  name={product.name}
-                  price={product.price}
-                  cardPadding="10px 10px 40px 10px"
-                />
-              </Link>
+              <ProductCard
+                key={index}
+                cardWidth="250px"
+                imgUrl={product.imgUrl}
+                imgAlt={product.imgAlt}
+                name={product.name}
+                price={product.price}
+                cardPadding="10px 10px 40px 10px"
+                index={index}
+              />
             ))}
           </S.ProductCardWrap>
         </S.ProductCardContainer>
