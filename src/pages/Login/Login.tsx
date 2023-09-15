@@ -4,6 +4,7 @@ import { ButtonSize } from '@class101/ui';
 import { StyledButton, StyledInput } from '../../Styles/common.style';
 import { theme } from '../../Styles/theme';
 import { LoginProps } from '../../types/components';
+import axios from 'axios';
 import * as S from './Login.style';
 
 const Login: FC = () => {
@@ -25,29 +26,33 @@ const Login: FC = () => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const login: FormEventHandler<HTMLFormElement> = e => {
+  const login: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
 
     if (idCondition && pwCondition) {
-      fetch('http://192.168.0.30:3000/users/signIn', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify({ email: email, password: password })
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.message) {
-            alert(data.message);
-          } else {
-            localStorage.setItem('token', data.token);
-            alert('로그인 성공');
-            navigate('/');
+      try {
+        const response = await axios.post(
+          'http://192.168.0.30:3000/users/signIn',
+          {
+            email: email,
+            password: password
+          },
+          {
+            headers: { 'Content-Type': 'application/json;charset=utf-8' }
           }
-        })
-        .catch(error => {
-          console.error('Fetch error:', error);
-          alert('Fetch error. Please check the console for details.');
-        });
+        );
+
+        if (response.data.message) {
+          alert(response.data.message);
+        } else {
+          localStorage.setItem('token', response.data.token);
+          alert('로그인 성공');
+          navigate('/');
+        }
+      } catch (error) {
+        console.error('Axios error:', error);
+        alert('Axios error. Please check the console for details.');
+      }
     }
   };
 
