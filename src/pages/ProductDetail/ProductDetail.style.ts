@@ -161,14 +161,24 @@ export const SelectSizeList = styled.ul`
   list-style: none;
 `;
 
-export const SelectSizeBtn = styled(Button)`
+export const UnSelectedSizeBtn = styled(Button)`
   margin: 0 0.4rem 0.4rem 0;
+
+  &:hover {
+    background-color: ${theme.gray};
+  }
 `;
 
-export const AddCartBtn = styled(Button)`
+export const SelectedSizeBtn = styled(UnSelectedSizeBtn)`
+  background: ${theme.gray};
+`;
+
+export const AddCartBtn = styled.button`
   width: 100%;
   height: 3.8rem;
-  background-color: ${Colors.black};
+  background-color: ${props =>
+    props.disabled ? Colors.gray700 : Colors.black};
+  border: none;
   border-radius: 2rem;
   color: ${Colors.white};
   font-size: 16px;
@@ -176,6 +186,7 @@ export const AddCartBtn = styled(Button)`
 
   &:hover {
     background-color: ${Colors.gray700};
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   }
 `;
 
