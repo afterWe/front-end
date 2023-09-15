@@ -64,6 +64,7 @@ const ProductDetail: FC = () => {
 
   const onSelectionChange = (e: any, property: string) => {
     const selectedValue = e.target.value || e.target.innerText;
+
     setIsSelected(prevProductData => ({
       ...prevProductData,
       [property]: selectedValue
@@ -106,11 +107,17 @@ const ProductDetail: FC = () => {
               {colors?.map((color, idx) => {
                 return (
                   <li key={idx}>
-                    <S.SelectColorBtn
-                      onClick={(e: any) => onSelectionChange(e, 'color')}
-                      value={color}
-                      color={color}
-                    />
+                    {isSelected.color !== color ? (
+                      <S.SelectColorBtn
+                        value={color}
+                        color={color}
+                        onClick={(e: any) => onSelectionChange(e, 'color')}
+                      />
+                    ) : color === 'white' ? (
+                      <S.CheckedColorBtnWhite fillColor="black" />
+                    ) : (
+                      <S.CheckedColorBtn fillColor={color} />
+                    )}
                   </li>
                 );
               })}
@@ -120,19 +127,33 @@ const ProductDetail: FC = () => {
             <S.Category>사이즈 선택</S.Category>
             <S.SelectSizeList>
               {findSize?.map(({ sizeId, sizes }) => {
+                const SizeButton =
+                  isSelected.size === sizes
+                    ? S.SelectedSizeBtn
+                    : S.UnSelectedSizeBtn;
+
                 return (
-                  <li
-                    key={sizeId}
-                    onClick={(e: any) => onSelectionChange(e, 'size')}
-                  >
-                    <S.SelectSizeBtn>{sizes}</S.SelectSizeBtn>
+                  <li key={sizeId}>
+                    <SizeButton
+                      onClick={(e: any) => onSelectionChange(e, 'size')}
+                    >
+                      {sizes}
+                    </SizeButton>
                   </li>
                 );
               })}
             </S.SelectSizeList>
           </p>
           <Modal
-            opener={<S.AddCartBtn>장바구니</S.AddCartBtn>}
+            opener={
+              <S.AddCartBtn
+                disabled={
+                  isSelected.color.length <= 0 || isSelected.size.length <= 0
+                }
+              >
+                장바구니
+              </S.AddCartBtn>
+            }
             contents="장바구니에 담겼습니다"
             successText="확인"
           />
