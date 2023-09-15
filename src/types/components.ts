@@ -191,10 +191,10 @@ export interface ProductDetailProps {
   serialNumber: string;
   name: string;
   price: number;
-  color?: string;
-  findSize?: Size[];
-  colors?: string[];
-  imageInfo: [];
+  color: string;
+  findSize: Array<{ sizeId: number; sizes: string }>;
+  colors: string[] | undefined;
+  imageInfo: Array<{ url: string; colorName: string }>;
 }
 export interface LoginProps {
   email: string;
