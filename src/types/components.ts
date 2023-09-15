@@ -173,7 +173,6 @@ export interface PaginationProps {
   currentPage: number;
   setCurrentPage: (page: number) => void;
 }
-
 export interface Size {
   sizeId: number;
   sizes: string;
@@ -196,4 +195,8 @@ export interface ProductDetailProps {
   findSize?: Size[];
   colors?: string[];
   imageInfo: [];
+}
+export interface LoginProps {
+  email: string;
+  password: string;
 }
