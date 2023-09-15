@@ -200,3 +200,9 @@ export interface LoginProps {
   email: string;
   password: string;
 }
+export interface userInfoProps {
+  id: number;
+  name: string;
+  phoneNumber: string;
+  email: string;
+}
