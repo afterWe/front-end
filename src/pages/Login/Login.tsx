@@ -51,7 +51,7 @@ const Login: FC = () => {
         }
       } catch (error) {
         console.error('Axios error:', error);
-        alert('Axios error. Please check the console for details.');
+        alert('Axios error.');
       }
     }
   };
