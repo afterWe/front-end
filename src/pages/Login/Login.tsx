@@ -1,11 +1,11 @@
 import React, { FC, FormEventHandler, useState } from 'react';
+import * as S from './Login.style';
 import { useNavigate, Link } from 'react-router-dom';
 import { ButtonSize } from '@class101/ui';
 import { StyledButton, StyledInput } from '../../Styles/common.style';
 import { theme } from '../../Styles/theme';
 import { LoginProps } from '../../types/components';
 import axios from 'axios';
-import * as S from './Login.style';
 import { BASE_URL } from '../../api';
 
 const Login: FC = () => {

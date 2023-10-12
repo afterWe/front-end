@@ -1,5 +1,5 @@
-import * as S from './Payment.style';
 import { FC, useEffect, useState } from 'react';
+import * as S from './Payment.style';
 import { PaymentInformProps, PaymentProps } from '../../types/components';
 import AddressEdit from '../../components/Address/AddressEdit';
 import Modal from '../../components/Modal/Modal';
@@ -44,12 +44,12 @@ const Payment: FC = () => {
                 }
                 successText="확인"
                 modalWidth="40%"
-                onSuccess={() => alert('선택 완료!')}
+                // onSuccess={() => alert('선택 완료!')}
               />
             </S.ModalBox>
           </S.EditBox>
           <S.AddressEditBox>
-            <AddressEdit showRecipient={false} />
+            <AddressEdit showRecipient={false} onAddressChange={() => {}} />
           </S.AddressEditBox>
         </S.DelieveryWrap>
         <S.PaymentInfoWrap>
