@@ -12,13 +12,10 @@ import {
 } from '@class101/ui';
 import { theme } from '../../Styles/theme';
 import { ProductDetailProps } from '../../types/components';
+import axios from 'axios';
 
 const ProductDetail: FC = () => {
-  const [isSelected, setIsSelected] = useState({
-    size: '',
-    color: ''
-  });
-
+  const [isHoverImage, setIsHoverImage] = useState('');
   const [productData, setProductData] = useState<ProductDetailProps>({
     productId: 0,
     categoryName: '',
@@ -30,14 +27,17 @@ const ProductDetail: FC = () => {
     colors: [],
     imageInfo: []
   });
+  const [isSelected, setIsSelected] = useState({
+    size: '',
+    color: productData.color || ''
+  });
 
   async function fetchProductData() {
     try {
-      const response = await fetch('/data/productDetail.json');
-      const data = await response.json();
-      setProductData(data);
+      const res = await axios.get('/data/productDetail.json');
+      setProductData(res.data);
     } catch (error) {
-      console.log('Error:', error);
+      console.log(error);
     }
   }
 
@@ -69,6 +69,29 @@ const ProductDetail: FC = () => {
       ...prevProductData,
       [property]: selectedValue
     }));
+
+    const firstImageOfSelectedColor = imageInfo.find(
+      ({ colorName }) => colorName === selectedValue
+    );
+    if (firstImageOfSelectedColor) {
+      setIsHoverImage(firstImageOfSelectedColor.url);
+    }
+  };
+
+  const onHoverImage = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const imgElement = e.target as HTMLImageElement;
+    const src = imgElement.getAttribute('src');
+    if (src) {
+      setIsHoverImage(src);
+    }
+  };
+
+  const getDefaultImageUrl = () => {
+    const defaultImage = imageInfo.find(
+      ({ colorName }) => colorName === isSelected.color
+    );
+
+    return defaultImage ? defaultImage.url : 'image_url_here';
   };
 
   return (
@@ -79,7 +102,7 @@ const ProductDetail: FC = () => {
             {imageInfo.map(
               ({ url, colorName }, index) =>
                 colorName === isSelected.color && (
-                  <S.SubImgBox key={index}>
+                  <S.SubImgBox key={index} onMouseOver={onHoverImage}>
                     <S.SubImg>
                       <S.ImgBox src={url} alt="product" />
                     </S.SubImg>
@@ -89,7 +112,10 @@ const ProductDetail: FC = () => {
           </S.SubImgGroup>
           <S.MainImgGroup>
             <S.MainImgBox>
-              <S.MainImg src="/images/nike.jpg" alt="selected img" />
+              <S.MainImg
+                src={isHoverImage || getDefaultImageUrl()}
+                alt="selected img"
+              />
             </S.MainImgBox>
           </S.MainImgGroup>
         </S.ProductDetailImgWrap>
