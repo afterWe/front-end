@@ -10,26 +10,77 @@ import {
 import { PageContainer } from '../../Styles/common.style';
 import * as S from './Cart.style';
 import Modal from '../../components/Modal/Modal';
+import axios from 'axios';
+import { BASE_URL } from '../../api';
 
-interface CartItem {
-  id: number;
-  itemImage: string;
-  itemName: string;
-  itemCategory: string;
-  itemSize: number | string;
-  itemColor: string;
-  itemPrice: number;
-}
+type CartItem = {
+  userId: number;
+  cartId: number;
+  productSizeId: number;
+  quantity: number;
+  productId: number;
+  productName: string;
+  productPrice: string;
+  productColor: string;
+  productSize: string;
+  imageUrl: string;
+  totalPrice: number;
+};
 
 const Cart: FC = () => {
   const [cartData, setCartData] = useState<CartItem[]>([]);
+  // const [selectQuantity, setQuantity] = useState<number>(1);
+  const token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzaWtrQG5hdmVyLmNvbSIsImlhdCI6MTY5Nzc4MzY0MiwiZXhwIjoxNjk4Mzg4NDQyLCJhdWQiOiJhdWRpZW5jZSIsImlzcyI6ImFmdGVyV2UifQ.d7miAU9aXGYGZh3gPqam-wvOuUxwVFG5pLhKtkD859I';
+
+  async function getCartData() {
+    try {
+      const response = await axios.get(`${BASE_URL}/carts/cartList`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      return setCartData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function deleteCartData(cartId: number) {
+    try {
+      await axios.delete(`${BASE_URL}/carts/${cartId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      getCartData();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function updateCartData(cartId: number, quantity: number) {
+    try {
+      await axios.put(
+        `${BASE_URL}/carts/updateCart/${cartId}`,
+        {
+          quantity: Number(quantity)
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+      getCartData();
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
-    fetch('./data/cartData.json')
-      .then(res => res.json())
-      .then(data => {
-        setCartData(data);
-      });
+    getCartData();
   }, []);
 
   return (
@@ -57,32 +108,48 @@ const Cart: FC = () => {
               <S.StyledHeadline2>장바구니</S.StyledHeadline2>
               {cartData &&
                 cartData.map(
-                  ({
-                    id,
-                    itemImage,
-                    itemName,
-                    itemCategory,
-                    itemColor,
-                    itemPrice,
-                    itemSize
-                  }) => (
+                  (
+                    {
+                      userId,
+                      cartId,
+                      productSizeId,
+                      quantity,
+                      productId,
+                      productName,
+                      productPrice,
+                      productColor,
+                      productSize,
+                      imageUrl
+                    },
+                    idx
+                  ) => (
                     <>
-                      <S.CartListGroup key={id}>
+                      <S.CartListGroup key={idx}>
                         <S.CartListDetailBox>
                           <S.ItemImageBox>
-                            <S.ItemImage src={itemImage} alt={itemName} />
+                            <S.ItemImage src={imageUrl} alt={productName} />
                           </S.ItemImageBox>
                           <S.ItemInfoBox>
                             <div>
-                              <S.ItemInfoName>{itemName}</S.ItemInfoName>
+                              <S.ItemInfoName>{productName}</S.ItemInfoName>
                               <S.ItemInfoDetail>
-                                {itemCategory} {itemSize}/{itemColor}
+                                수량: {quantity}
+                              </S.ItemInfoDetail>
+                              <S.ItemInfoDetail>
+                                색상: {productColor}
+                              </S.ItemInfoDetail>
+                              <S.ItemInfoDetail>
+                                사이즈: {productSize}
                               </S.ItemInfoDetail>
                             </div>
                             <div>
                               <S.StyledSelect
-                                value=""
-                                placeholder="1"
+                                onChange={(
+                                  e: React.ChangeEvent<HTMLSelectElement>
+                                ) =>
+                                  updateCartData(cartId, Number(e.target.value))
+                                }
+                                value={quantity}
                                 options={['1', '2', '3', '4', '5']}
                                 size="md"
                               />
@@ -96,14 +163,13 @@ const Cart: FC = () => {
                                 icon={<TrashIcon />}
                                 size={ButtonSize.XSMALL}
                                 color={ButtonColor.TRANSPARENT}
+                                onClick={() => deleteCartData(cartId)}
                               />
                             }
-                            title=""
-                            contents="삭제하시겠습니까?"
+                            contents="삭제되었습니다."
                             successText="확인"
-                            cancelText="취소"
                           />
-                          {itemPrice.toLocaleString()} 원
+                          {productPrice?.toLocaleString()} 원
                         </S.DeleteAndPriceBox>
                       </S.CartListGroup>
                       <S.StyledDivider />
@@ -117,7 +183,11 @@ const Cart: FC = () => {
           <S.StyledHeadline2>주문 내역</S.StyledHeadline2>
           <S.ProductPriceBox>
             <span>상품금액 :</span>
-            <span>data</span>
+            <span>
+              {cartData.length > 0 &&
+                cartData[cartData.length - 1]?.totalPrice.toLocaleString()}{' '}
+              원
+            </span>
           </S.ProductPriceBox>
           <S.ShippingFeeBox>
             <span>배송비 :</span>
@@ -125,7 +195,11 @@ const Cart: FC = () => {
           </S.ShippingFeeBox>
           <S.TotalPriceBox>
             <span>총 결제 금액 :</span>
-            <span>data</span>
+            <span>
+              {cartData.length > 0 &&
+                cartData[cartData.length - 1]?.totalPrice.toLocaleString()}{' '}
+              원
+            </span>
           </S.TotalPriceBox>
           <S.CartOrderButtonBox>
             <S.CartOrderButton fill>결제 하기</S.CartOrderButton>

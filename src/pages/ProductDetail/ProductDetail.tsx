@@ -12,13 +12,13 @@ import {
 } from '@class101/ui';
 import { theme } from '../../Styles/theme';
 import { ProductDetailProps } from '../../types/components';
+import axios from 'axios';
+import { BASE_URL } from '../../api';
+import { useParams } from 'react-router-dom';
 
 const ProductDetail: FC = () => {
-  const [isSelected, setIsSelected] = useState({
-    size: '',
-    color: ''
-  });
-
+  const params = useParams();
+  const [isHoverImage, setIsHoverImage] = useState('');
   const [productData, setProductData] = useState<ProductDetailProps>({
     productId: 0,
     categoryName: '',
@@ -30,14 +30,44 @@ const ProductDetail: FC = () => {
     colors: [],
     imageInfo: []
   });
+  const [isSelected, setIsSelected] = useState({
+    size: '',
+    color: productData.color || ''
+  });
+  const [addCartDetails, setAddCartDetails] = useState({
+    id: null as number | null,
+    size: null as number | null
+  });
+  console.log(addCartDetails);
 
   async function fetchProductData() {
     try {
-      const response = await fetch('/data/productDetail.json');
-      const data = await response.json();
-      setProductData(data);
+      const response = await axios.get(`${BASE_URL}/products/${params.id}`);
+
+      return setProductData(response.data);
     } catch (error) {
-      console.log('Error:', error);
+      console.error('Error:', error);
+    }
+  }
+
+  async function addCartData() {
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzaWtrQG5hdmVyLmNvbSIsImlhdCI6MTY5Nzc4MzY0MiwiZXhwIjoxNjk4Mzg4NDQyLCJhdWQiOiJhdWRpZW5jZSIsImlzcyI6ImFmdGVyV2UifQ.d7miAU9aXGYGZh3gPqam-wvOuUxwVFG5pLhKtkD859I';
+    try {
+      await axios.post(
+        `${BASE_URL}/carts/addCart`,
+        {
+          productId: Number(addCartDetails.id),
+          sizeId: Number(addCartDetails.size)
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -65,10 +95,49 @@ const ProductDetail: FC = () => {
   const onSelectionChange = (e: any, property: string) => {
     const selectedValue = e.target.value || e.target.innerText;
 
-    setIsSelected(prevProductData => ({
-      ...prevProductData,
-      [property]: selectedValue
-    }));
+    if (property === 'size') {
+      const selectedSize = findSize?.find(item => item.sizes === selectedValue);
+      if (selectedSize) {
+        setAddCartDetails(prev => ({ ...prev, size: selectedSize.sizeId }));
+      }
+    }
+
+    const firstImageOfSelectedColor = imageInfo.find(
+      ({ colorName }) => colorName === selectedValue
+    ) as { url: string } | undefined;
+
+    if (firstImageOfSelectedColor) {
+      setIsHoverImage(firstImageOfSelectedColor.url);
+    }
+
+    const productColorId = imageInfo.find(
+      ({ colorName }) => colorName === selectedValue
+    ) as { productIdByImage: number } | undefined;
+
+    if (property === 'color' && productColorId) {
+      setAddCartDetails(prev => ({
+        ...prev,
+        id: productColorId.productIdByImage
+      }));
+    }
+
+    setIsSelected(prev => ({ ...prev, [property]: selectedValue }));
+  };
+
+  const onHoverImage = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const imgElement = e.target as HTMLImageElement;
+    const src = imgElement.getAttribute('src');
+    if (src) {
+      setIsHoverImage(src);
+    }
+  };
+
+  const getDefaultImageUrl = () => {
+    const defaultImage = imageInfo.find(
+      ({ colorName }) => colorName === isSelected.color
+    ) as { url: string } | undefined;
+
+    return defaultImage ? defaultImage.url : 'image_url_here';
   };
 
   return (
@@ -79,7 +148,7 @@ const ProductDetail: FC = () => {
             {imageInfo.map(
               ({ url, colorName }, index) =>
                 colorName === isSelected.color && (
-                  <S.SubImgBox key={index}>
+                  <S.SubImgBox key={index} onMouseOver={onHoverImage}>
                     <S.SubImg>
                       <S.ImgBox src={url} alt="product" />
                     </S.SubImg>
@@ -89,7 +158,10 @@ const ProductDetail: FC = () => {
           </S.SubImgGroup>
           <S.MainImgGroup>
             <S.MainImgBox>
-              <S.MainImg src="/images/nike.jpg" alt="selected img" />
+              <S.MainImg
+                src={isHoverImage || getDefaultImageUrl()}
+                alt="selected img"
+              />
             </S.MainImgBox>
           </S.MainImgGroup>
         </S.ProductDetailImgWrap>
@@ -150,6 +222,7 @@ const ProductDetail: FC = () => {
                 disabled={
                   isSelected.color.length <= 0 || isSelected.size.length <= 0
                 }
+                onClick={addCartData}
               >
                 장바구니
               </S.AddCartBtn>

@@ -121,13 +121,14 @@ export interface SelectColorProps {
 
 export interface ProductCardProps {
   id?: number;
-  imgUrl: string;
+  imgUrl?: string;
   imgAlt: string;
   name: string;
   price: string;
   cardPadding?: string;
   cardWidth: string;
   index?: number;
+  url?: string;
 }
 
 export interface ProductCardStyleProps {
