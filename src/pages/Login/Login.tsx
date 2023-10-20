@@ -6,6 +6,7 @@ import { theme } from '../../Styles/theme';
 import { LoginProps } from '../../types/components';
 import axios from 'axios';
 import * as S from './Login.style';
+import { BASE_URL } from '../../api';
 
 const Login: FC = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Login: FC = () => {
     if (idCondition && pwCondition) {
       try {
         const response = await axios.post(
-          'http://192.168.0.30:3000/users/signIn',
+          `${BASE_URL}/users/signIn`,
           {
             email: email,
             password: password

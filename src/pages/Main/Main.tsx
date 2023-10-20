@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import axios from 'axios';
 import Slider from 'react-slick';
 import * as S from './Main.style';
 import ProductCard from '../../components/ProductCard/ProductCard';
@@ -8,11 +9,20 @@ const Main: FC = () => {
   const [newProductData, setNewProductData] = useState<ProductCardProps[]>([]);
 
   useEffect(() => {
-    fetch('./data/newProductList.json')
-      .then(res => res.json())
-      .then(data => {
-        setNewProductData(data);
-      });
+    async function fetchNewProductData() {
+      try {
+        const response = await axios.get(
+          //baseUrl로 수정할 것
+          `http://192.168.0.51:3000/products/new?page=1&perPage=9`
+        );
+
+        return setNewProductData(response.data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
+    fetchNewProductData();
   }, []);
 
   const carouselSettings = {
@@ -51,7 +61,7 @@ const Main: FC = () => {
                   cardPadding="2rem"
                   name={product.name}
                   price={product.price}
-                  imgUrl={product.imgUrl}
+                  imgUrl={product.url}
                   imgAlt={product.imgAlt}
                 />
               </div>

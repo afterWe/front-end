@@ -24,11 +24,11 @@ const ProductList: FC = () => {
         <S.ListTitle>
           {params.id === 'new'
             ? 'New'
-            : params.id === 'clothing'
+            : params.id === 'clothes'
             ? 'Clothing'
             : params.id === 'shoes'
             ? 'Shoes'
-            : params.id === 'items'
+            : params.id === 'goods'
             ? 'Items'
             : null}
         </S.ListTitle>
