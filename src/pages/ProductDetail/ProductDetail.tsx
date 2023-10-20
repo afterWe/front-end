@@ -34,7 +34,11 @@ const ProductDetail: FC = () => {
     size: '',
     color: productData.color || ''
   });
-  console.log(isSelected.size);
+  const [addCartDetails, setAddCartDetails] = useState({
+    id: null as number | null,
+    size: null as number | null
+  });
+  console.log(addCartDetails);
 
   async function fetchProductData() {
     try {
@@ -43,6 +47,27 @@ const ProductDetail: FC = () => {
       return setProductData(response.data);
     } catch (error) {
       console.error('Error:', error);
+    }
+  }
+
+  async function addCartData() {
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJzaWtrQG5hdmVyLmNvbSIsImlhdCI6MTY5Nzc4MzY0MiwiZXhwIjoxNjk4Mzg4NDQyLCJhdWQiOiJhdWRpZW5jZSIsImlzcyI6ImFmdGVyV2UifQ.d7miAU9aXGYGZh3gPqam-wvOuUxwVFG5pLhKtkD859I';
+    try {
+      await axios.post(
+        `${BASE_URL}/carts/addCart`,
+        {
+          productId: Number(addCartDetails.id),
+          sizeId: Number(addCartDetails.size)
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -69,16 +94,18 @@ const ProductDetail: FC = () => {
 
   const onSelectionChange = (e: any, property: string) => {
     const selectedValue = e.target.value || e.target.innerText;
-    console.log(selectedValue);
 
-    setIsSelected(prevProductData => ({
-      ...prevProductData,
-      [property]: selectedValue
-    }));
+    if (property === 'size') {
+      const selectedSize = findSize?.find(item => item.sizes === selectedValue);
+      if (selectedSize) {
+        setAddCartDetails(prev => ({ ...prev, size: selectedSize.sizeId }));
+      }
+    }
 
     const firstImageOfSelectedColor = imageInfo.find(
       ({ colorName }) => colorName === selectedValue
     ) as { url: string } | undefined;
+
     if (firstImageOfSelectedColor) {
       setIsHoverImage(firstImageOfSelectedColor.url);
     }
@@ -86,7 +113,15 @@ const ProductDetail: FC = () => {
     const productColorId = imageInfo.find(
       ({ colorName }) => colorName === selectedValue
     ) as { productIdByImage: number } | undefined;
-    console.log(productColorId, productColorId?.productIdByImage);
+
+    if (property === 'color' && productColorId) {
+      setAddCartDetails(prev => ({
+        ...prev,
+        id: productColorId.productIdByImage
+      }));
+    }
+
+    setIsSelected(prev => ({ ...prev, [property]: selectedValue }));
   };
 
   const onHoverImage = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -187,6 +222,7 @@ const ProductDetail: FC = () => {
                 disabled={
                   isSelected.color.length <= 0 || isSelected.size.length <= 0
                 }
+                onClick={addCartData}
               >
                 장바구니
               </S.AddCartBtn>
