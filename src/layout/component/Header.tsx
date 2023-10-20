@@ -104,7 +104,7 @@ export default Header;
 
 const NAV_LIST = [
   { id: 1, name: 'NEW', router: '/product-list/new' },
-  { id: 2, name: 'Clothing', router: '/product-list/clothing' },
+  { id: 2, name: 'Clothing', router: '/product-list/clothes' },
   { id: 3, name: 'Shoes', router: '/product-list/shoes' },
-  { id: 4, name: 'Items', router: '/product-list/items' }
+  { id: 4, name: 'Items', router: '/product-list/goods' }
 ];

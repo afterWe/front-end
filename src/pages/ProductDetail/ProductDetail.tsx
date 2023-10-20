@@ -34,12 +34,11 @@ const ProductDetail: FC = () => {
     size: '',
     color: productData.color || ''
   });
+  console.log(isSelected.size);
 
   async function fetchProductData() {
     try {
-      // const response = await axios('/data/productDetail.json');
       const response = await axios.get(`${BASE_URL}/products/${params.id}`);
-      console.log(response.data);
 
       return setProductData(response.data);
     } catch (error) {
@@ -70,6 +69,7 @@ const ProductDetail: FC = () => {
 
   const onSelectionChange = (e: any, property: string) => {
     const selectedValue = e.target.value || e.target.innerText;
+    console.log(selectedValue);
 
     setIsSelected(prevProductData => ({
       ...prevProductData,
@@ -82,6 +82,11 @@ const ProductDetail: FC = () => {
     if (firstImageOfSelectedColor) {
       setIsHoverImage(firstImageOfSelectedColor.url);
     }
+
+    const productColorId = imageInfo.find(
+      ({ colorName }) => colorName === selectedValue
+    ) as { productIdByImage: number } | undefined;
+    console.log(productColorId, productColorId?.productIdByImage);
   };
 
   const onHoverImage = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
