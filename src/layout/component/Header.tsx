@@ -69,7 +69,9 @@ const Header: FC = () => {
           {NAV_LIST.map(list => {
             return (
               <li key={list.id}>
-                <S.StyledBtn color={Colors.blue700}>{list.name}</S.StyledBtn>
+                <Link to={list.router}>
+                  <S.StyledBtn color={Colors.blue700}>{list.name}</S.StyledBtn>
+                </Link>
               </li>
             );
           })}
