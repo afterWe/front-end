@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://192.168.0.48:3000';
+export const BASE_URL = 'http://15.164.165.144:3001';
 
 export const API_PATHS = {
   PRODUCTDETAIL: {
