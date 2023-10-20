@@ -1,6 +1,7 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import Slider from 'react-slick';
+import { BASE_URL } from '../../api';
 import * as S from './Main.style';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { ProductCardProps } from '../../types/components';
@@ -12,8 +13,7 @@ const Main: FC = () => {
     async function fetchNewProductData() {
       try {
         const response = await axios.get(
-          //baseUrl로 수정할 것
-          `http://192.168.0.51:3000/products/new?page=1&perPage=9`
+          `${BASE_URL}/products/new?page=1&perPage=9`
         );
 
         return setNewProductData(response.data);
