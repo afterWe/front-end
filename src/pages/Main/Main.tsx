@@ -13,7 +13,7 @@ const Main: FC = () => {
       try {
         const response = await axios.get(
           //baseUrl로 수정할 것
-          `http://192.168.0.51:3000/products/new/?page=1&perPage=9`
+          `http://192.168.0.51:3000/products/new?page=1&perPage=9`
         );
 
         return setNewProductData(response.data);
