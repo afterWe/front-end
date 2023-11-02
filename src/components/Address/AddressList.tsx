@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Body2 } from '@class101/ui';
 import { AddressDataProps, AddressTitleProps } from '../../types/components';
 import Modal from '../Modal/Modal';
@@ -11,6 +12,7 @@ const AddressList: FC<AddressTitleProps> = ({
   showContents
 }) => {
   const [addressData, setAddressData] = useState<AddressDataProps[]>([]);
+  const location = useLocation();
 
   useEffect(() => {
     fetch('/data/addressList.json')
@@ -20,9 +22,11 @@ const AddressList: FC<AddressTitleProps> = ({
       });
   }, []);
 
-  const handleRadioChange = (selectedValue: string) => {};
-
-  console.log(addressData);
+  const handleRadioChange = (selectedValue: string) => {
+    if (location.pathname === '/mypage') {
+      console.log('기본 배송지');
+    }
+  };
 
   return (
     <S.AddressList>
