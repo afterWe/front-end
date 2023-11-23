@@ -2,8 +2,6 @@ import React, { FC, useEffect, useState } from 'react';
 import Modal from '../../components/Modal/Modal';
 import * as S from './ProductDetail.style';
 import {
-  StarOutlineIcon,
-  StarIcon,
   Reply,
   EditOutlineIcon,
   ReplySize,
@@ -15,9 +13,13 @@ import { ProductDetailProps } from '../../types/components';
 import axios from 'axios';
 import { BASE_URL } from '../../api';
 import { useParams } from 'react-router-dom';
+import Rate from '../../components/Review/Rate';
 
 const ProductDetail: FC = () => {
   const params = useParams();
+  console.log('id', params.id, 'comment', 'rate');
+  const [reviewText, setReviewText] = useState('');
+  const [reviewEdit, setReviewEdit] = useState(false);
   const [isHoverImage, setIsHoverImage] = useState('');
   const [productData, setProductData] = useState<ProductDetailProps>({
     productId: 0,
@@ -38,7 +40,6 @@ const ProductDetail: FC = () => {
     id: null as number | null,
     size: null as number | null
   });
-  console.log(addCartDetails);
 
   async function fetchProductData() {
     try {
@@ -235,14 +236,8 @@ const ProductDetail: FC = () => {
       <S.StyledDivider color={theme.gray} />
       <S.ProductDetailLowerContainer>
         <S.ReviewTitle>리뷰(3.5/5.0)</S.ReviewTitle>
+        <Rate />
         <S.ReviewForm>
-          <div>
-            <StarOutlineIcon />
-            <StarOutlineIcon />
-            <StarOutlineIcon />
-            <StarOutlineIcon />
-            <StarOutlineIcon />
-          </div>
           <S.AddReviewGroup>
             <S.ReviewText placeholder="후기를 남겨주세요!" />
             <S.AddReviewBtnOuter>
@@ -267,40 +262,30 @@ const ProductDetail: FC = () => {
               //nameDescription="수정됨"
               nameDescriptionColor={theme.darkGray}
               content={
-                <div>
+                reviewEdit ? (
+                  <ReviewEdit setReviewEdit={setReviewEdit} />
+                ) : (
                   <div>
-                    <StarIcon size={16} />
-                    <StarIcon size={16} />
-                    <StarIcon size={16} />
-                    <StarOutlineIcon size={16} />
-                    <StarOutlineIcon size={16} />
+                    <div>
+                      <Rate />
+                    </div>
+                    댓글내용
                   </div>
-                  댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용
-                  댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용
-                  댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용
-                  댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용 댓글내용
-                </div>
-                // 수정하기 버튼 클릭 시 생기는 input
-                // <S.ReviewForm>
-                //   <div>
-                //     <StarOutlineIcon />
-                //     <StarOutlineIcon />
-                //     <StarOutlineIcon />
-                //     <StarOutlineIcon />
-                //     <StarOutlineIcon />
-                //   </div>
-                //   <S.AddReviewGroup>
-                //     <S.ReviewText placeholder="후기를 남겨주세요!" />
-                //     <S.AddReviewBtnOuter>
-                //       <S.AddReviewBtn type="submit">게시</S.AddReviewBtn>
-                //     </S.AddReviewBtnOuter>
-                //   </S.AddReviewGroup>
-                // </S.ReviewForm>
+                )
               }
               timeText="업로드 시간"
-              rightAction={[
+            />
+            {!reviewEdit && (
+              <S.ReviewIcons>
+                <Reply.Action
+                  icon={<EditOutlineIcon />}
+                  onClick={() => {
+                    setReviewEdit(true);
+                  }}
+                  position={ButtonIconPosition.LEFT}
+                  hidden={false}
+                />
                 <Modal
-                  key="1"
                   opener={
                     <Reply.Action
                       icon={<TrashIcon />}
@@ -311,17 +296,9 @@ const ProductDetail: FC = () => {
                   contents="댓글을 삭제 하시겠습니까?"
                   successText="확인"
                   cancelText="취소"
-                />,
-                <Reply.Action
-                  key="2"
-                  icon={<EditOutlineIcon />}
-                  //수정하기 버튼 클릭 시 textarea로 바뀌는 로직
-                  //onClick={() => {}}
-                  position={ButtonIconPosition.LEFT}
-                  hidden={false}
                 />
-              ]}
-            />
+              </S.ReviewIcons>
+            )}
           </li>
         </ul>
         <S.ShowMoreReview>리뷰 더보기</S.ShowMoreReview>
@@ -331,3 +308,30 @@ const ProductDetail: FC = () => {
 };
 
 export default ProductDetail;
+
+const ReviewEdit = ({
+  setReviewEdit
+}: {
+  setReviewEdit: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  return (
+    <S.ReviewForm>
+      <div>
+        <Rate />
+      </div>
+      <S.AddReviewGroup>
+        <S.ReviewText placeholder="후기를 남겨주세요!" />
+        <S.AddReviewBtnOuter>
+          <S.AddReviewBtn type="submit">게시</S.AddReviewBtn>
+          <S.AddReviewBtn
+            onClick={() => {
+              setReviewEdit(false);
+            }}
+          >
+            취소
+          </S.AddReviewBtn>
+        </S.AddReviewBtnOuter>
+      </S.AddReviewGroup>
+    </S.ReviewForm>
+  );
+};

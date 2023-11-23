@@ -237,3 +237,8 @@ export const ShowMoreReview = styled(Button)`
     background: none;
   }
 `;
+
+export const ReviewIcons = styled.div`
+  display: flex;
+  justify-content: end;
+`;
