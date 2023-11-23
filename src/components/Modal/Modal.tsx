@@ -1,11 +1,11 @@
-import { FC, useState } from 'react';
+import { FC, useState, ChangeEvent } from 'react';
 import * as S from './Modal.style';
-import { ModalProps } from '../../types/components';
+import { AddressModalProps } from '../../types/components';
 import { ButtonColor, CloseIcon, Headline3 } from '@class101/ui';
 import { StyledButton } from '../../Styles/common.style';
 import { theme } from '../../Styles/theme';
 
-const Modal: FC<ModalProps> = ({
+const Modal: FC<AddressModalProps> = ({
   opener,
   title,
   contents,
@@ -16,11 +16,21 @@ const Modal: FC<ModalProps> = ({
   onCancel
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [changeData, setChangeData] = useState<string>('');
 
   const handleModal = () => {
     setIsOpen(!isOpen);
 
     document.body.style.overflow = isOpen ? 'auto' : 'hidden';
+  };
+
+  const handleData = (event: ChangeEvent<HTMLInputElement>) => {
+    setChangeData(event.target.value);
+  };
+
+  const onSave = (e: any) => {
+    setChangeData('');
+    handleData(e);
   };
 
   return (
@@ -62,7 +72,7 @@ const Modal: FC<ModalProps> = ({
                   type="button"
                   fill={true}
                   isMargin={false}
-                  onClick={onSuccess === undefined ? handleModal : onSuccess}
+                  onClick={onSuccess === undefined ? handleModal : onSave}
                 >
                   {successText}
                 </StyledButton>

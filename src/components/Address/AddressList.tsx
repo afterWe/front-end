@@ -11,6 +11,8 @@ const AddressList: FC<AddressTitleProps> = ({
   showContents
 }) => {
   const [addressData, setAddressData] = useState<AddressDataProps[]>([]);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [selectedAddrId, setSelectedAddrId] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/data/addressList.json')
@@ -22,7 +24,33 @@ const AddressList: FC<AddressTitleProps> = ({
 
   const handleRadioChange = (selectedValue: string) => {};
 
-  console.log(addressData);
+  // console.log(addressData);
+
+  const handleDelete = (addressId: string) => {
+    const newAddList = addressData.filter(
+      (item: any) => item.id! === addressId
+    );
+    setShowDeleteConfirm(true);
+    setSelectedAddrId(addressId);
+  };
+
+  const handleAddressChange = (newAddress: string) => {
+    // Handle the address change, you can use it to update other components or state if needed
+    console.log('Address changed to:', newAddress);
+  };
+
+  // const handleConfirmDelete = () => {
+  //   if (selectedAddrId && typeof selectedAddrId === 'string') {
+  //     const updatedAddressData = addressData.filter(item => {
+  //       if (item.id && typeof item.id === 'string') {
+  //         return item.id !== selectedAddrId;
+  //       }
+  //       return false;
+  //     });
+  //     setAddressData(updatedAddressData);
+  //     setShowDeleteConfirm(false);
+  //   }
+  // };
 
   return (
     <S.AddressList>
@@ -32,7 +60,13 @@ const AddressList: FC<AddressTitleProps> = ({
           <Modal
             opener={<S.StyledTextButton>배송지추가</S.StyledTextButton>}
             title="배송지 추가"
-            contents={<AddressEdit data={false} showRecipient={true} />}
+            contents={
+              <AddressEdit
+                data={false}
+                showRecipient={true}
+                onAddressChange={handleAddressChange}
+              />
+            }
             successText="확인"
             cancelText="취소"
             modalWidth="30rem"
@@ -80,13 +114,30 @@ const AddressList: FC<AddressTitleProps> = ({
                       addressData={addressItem}
                       data={true}
                       showRecipient={true}
+                      onAddressChange={handleAddressChange}
                     />
                   }
                   successText="확인"
                   cancelText="취소"
                   modalWidth="30rem"
                 />
-                <S.StyledTextButton>삭제</S.StyledTextButton>
+                <Modal
+                  opener={
+                    <S.StyledTextButton
+                      onClick={() =>
+                        handleDelete(addressItem.id?.toString() || '')
+                      }
+                    >
+                      삭제
+                    </S.StyledTextButton>
+                  }
+                  contents="삭제하시겠습니까?"
+                  successText="삭제"
+                  cancelText="취소"
+                  // onConfirm={handleConfirmDelete}
+                  // onCancel={() => setShowDeleteConfirm(false)}
+                  modalWidth="30rem"
+                />
               </S.AddressEditBox>
             </S.StyledRadioBtn>
           ))}

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
+import * as S from './style/Header.style';
 import { Link, useNavigate } from 'react-router-dom';
 import { Colors } from '@class101/ui';
-import * as S from './style/Header.style';
 
 const Header: FC = () => {
   const navigate = useNavigate();
@@ -51,7 +51,8 @@ const Header: FC = () => {
     {
       id: 5,
       name: '마이페이지',
-      router: token ? '/mypage' : '/login'
+      // router: token ? '/mypage' : '/login'
+      router: '/mypage'
     }
   ];
 

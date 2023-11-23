@@ -14,7 +14,7 @@ export interface StyledButtonProps {
   margin?: string;
 }
 
-export interface ModalProps {
+export interface AddressModalProps {
   opener: ReactNode;
   title?: string;
   contents: ReactNode | string;
@@ -23,6 +23,11 @@ export interface ModalProps {
   modalWidth?: string;
   onSuccess?: (() => void) | undefined;
   onCancel?: (() => void) | undefined;
+  onChange?: (() => void) | undefined;
+  setChangeData?: ((data: any) => void) | undefined;
+  onAddressChange?: ((newAddress: string) => void) | undefined;
+
+  // onConfirm: (() => void) | undefined;
 }
 
 export interface ModalSizeProps {
@@ -94,6 +99,7 @@ export interface PaymentShowRecipientProps {
     address?: string;
     addressDetail?: string;
   };
+  onAddressChange: (address: string) => void;
 }
 
 export interface SelectColorProps {
@@ -152,6 +158,7 @@ export interface AddressDataProps {
   postCode?: number;
   address?: string;
   addressDetail?: string;
+  onAddressChange?: (address: string) => void;
 }
 
 export interface AddressTitleProps {
@@ -200,4 +207,13 @@ export interface ProductDetailProps {
 export interface LoginProps {
   email: string;
   password: string;
+}
+declare global {
+  export interface Window {
+    daum: any;
+  }
+}
+export interface IAddr {
+  address: string;
+  zonecode: string;
 }
