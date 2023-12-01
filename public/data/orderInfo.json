@@ -1,10 +1,50 @@
 [
   {
-    "id": 1,
-    "date": "2023.03.23",
-    "delievery": "배송중",
-    "address": "서울 은평구 진관 4로 48-51, 101호 ",
-    "price": "567000",
-    "payment_method": "kakao-pay"
+    "orderId": 1,
+    "userId": 2,
+    "totalPrice": 185000,
+    "orderNumber": "20231011-123456",
+    "orderDate": "2023-10-12",
+    "paymentsMethod": "바로결제",
+    "orderStatus": "배송준비중",
+    "address": "서울시 강남구 테헤란로 427, 10층",
+    "productsInfo": [
+      {
+        "orderId": 1,
+        "productId": 4,
+        "name": "AirGlide",
+        "category": "shoes",
+        "gender": null,
+        "imageUrl": "https://image.url/",
+        "color": "AirGlide",
+        "size": "270",
+        "quantity": 1,
+        "purchasePrice": 95000
+      },
+      {
+        "orderId": 1,
+        "productId": 58,
+        "name": "Bra top ver.2",
+        "category": "clothes",
+        "gender": "female",
+        "imageUrl": "https://image.url/",
+        "color": "Bra top ver.2",
+        "size": "M",
+        "quantity": 1,
+        "purchasePrice": 55000
+      },
+      {
+        "orderId": 1,
+        "productId": 101,
+        "name": "Pom-pom knit beanie",
+        "category": "goods",
+        "gender": null,
+        "imageUrl": "https://image.url/",
+        "color": "Pom-pom knit beanie",
+        "size": "basic",
+        "quantity": 1,
+        "purchasePrice": 35000
+      }
+    ]
   }
 ]

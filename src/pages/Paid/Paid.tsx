@@ -3,24 +3,23 @@ import * as S from './Paid.style';
 import OrderInfoComponent from '../../components/Paid/OrderInfoComponent';
 import { ButtonSize } from '@class101/ui';
 import {
-  OrderDetailDataProps,
+  // OrderDetailDataProps,
   OrderInfoDataProps
 } from '../../types/components';
 
 const Paid: FC = () => {
   const [orderInfoData, setOrderInfoData] = useState<OrderInfoDataProps[]>([]);
-  const [orderDetailData, setOrderDetailData] = useState<
-    OrderDetailDataProps[]
-  >([]);
+  // const [orderDetailData, setOrderDetailData] = useState<
+  //   OrderDetailDataProps[]
+  // >([]);
 
   useEffect(() => {
     fetch('/data/orderInfo.json')
       .then(res => res.json())
       .then(data => setOrderInfoData(data));
 
-    fetch('/data/orderDetail.json')
-      .then(res => res.json())
-      .then(data => setOrderDetailData(data));
+    fetch('/data/orderDetail.json').then(res => res.json());
+    // .then(data => setOrderDetailData(data));
   }, []);
 
   return (
@@ -31,7 +30,7 @@ const Paid: FC = () => {
       <S.BorderLine color="black" />
       <OrderInfoComponent
         orderInfoData={orderInfoData}
-        orderDetailData={orderDetailData}
+        // orderDetailData={orderDetailData}
       />
       <S.ButtonGroup>
         <S.OnClickButton fill size={ButtonSize.LARGE}>
