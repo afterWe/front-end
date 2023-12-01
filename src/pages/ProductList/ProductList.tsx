@@ -1,5 +1,10 @@
 import { FC, useEffect, useState } from 'react';
-import { useSearchParams, useParams, useLocation } from 'react-router-dom';
+import {
+  useSearchParams,
+  useParams,
+  useLocation,
+  useNavigate
+} from 'react-router-dom';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ProductAside from './ProductAside';
@@ -19,6 +24,8 @@ const ProductList: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams();
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setProductListData([]);
@@ -35,6 +42,7 @@ const ProductList: FC = () => {
           }
         );
         setProductListData(response.data);
+        setLoading(false);
       } catch (err) {
         console.log('ERROR!');
       }
@@ -42,6 +50,8 @@ const ProductList: FC = () => {
 
     fetchData();
   }, [params.id, location.search]);
+
+  if (loading) return <div>loading</div>;
 
   const fetchMoreData = async () => {
     try {
@@ -107,16 +117,22 @@ const ProductList: FC = () => {
             <S.ProductCardWrap>
               {productListData &&
                 productListData.map((data, index) => (
-                  <ProductCard
+                  <div
                     key={data.id}
-                    cardWidth="250px"
-                    imgUrl={data.url}
-                    imgAlt={data.imgAlt}
-                    name={data.name}
-                    price={data.price}
-                    cardPadding="10px 10px 40px 10px"
-                    index={index}
-                  />
+                    onClick={() => {
+                      navigate(`/product-detail/${data.id}`);
+                    }}
+                  >
+                    <ProductCard
+                      cardWidth="250px"
+                      imgUrl={data.url}
+                      imgAlt={data.imgAlt}
+                      name={data.name}
+                      price={data.price}
+                      cardPadding="10px 10px 40px 10px"
+                      index={index}
+                    />
+                  </div>
                 ))}
             </S.ProductCardWrap>
           </S.ProductCardContainer>
