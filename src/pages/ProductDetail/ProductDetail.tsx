@@ -38,17 +38,22 @@ const ProductDetail: FC = () => {
     id: null as number | null,
     size: null as number | null
   });
-  console.log(addCartDetails);
 
-  async function fetchProductData() {
-    try {
-      const response = await axios.get(`${BASE_URL}/products/${params.id}`);
+  useEffect(() => {
+    async function fetchProductData() {
+      try {
+        const response = await axios.get(
+          `${BASE_URL}/products/${params.productId}`
+        );
 
-      return setProductData(response.data);
-    } catch (error) {
-      console.error('Error:', error);
+        return setProductData(response.data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
-  }
+
+    fetchProductData();
+  }, [params.productId]);
 
   async function addCartData() {
     const token =
@@ -70,10 +75,6 @@ const ProductDetail: FC = () => {
       console.error(error);
     }
   }
-
-  useEffect(() => {
-    fetchProductData();
-  }, []);
 
   useEffect(() => {
     setIsSelected(prevProductData => ({

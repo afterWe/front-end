@@ -30,28 +30,29 @@ export interface ModalSizeProps {
 }
 
 export interface OrderInfoDataProps {
-  id: number;
-  date: string;
-  delievery: string;
+  orderId: number;
+  orderDate: string;
+  orderStatus: string;
   address: string;
-  price: string;
-  payment_method: string;
+  totalPrice: string;
+  paymentsMethod: string;
+  productsInfo: ProductsInfoProps[];
 }
 
-export interface OrderDetailDataProps {
-  id: number;
-  image: string;
-  title: string;
+export interface ProductsInfoProps {
+  orderId: number;
+  imageUrl: string;
+  name: string;
   category: string;
   color: string;
   size: string;
   quantity: number;
-  price: string;
+  purchasePrice: string;
 }
 
 export interface OrderInfoComponentProps {
   orderInfoData: OrderInfoDataProps[];
-  orderDetailData: OrderDetailDataProps[];
+  // orderDetailData: OrderDetailDataProps[];
   onDelievery?: boolean;
 }
 
@@ -61,7 +62,7 @@ export interface OrderInfoComponentProps {
 // }
 
 export interface OrderDetailComponentProps {
-  orderDetailData: OrderDetailDataProps[];
+  // orderDetailData: OrderDetailDataProps[];
 }
 
 export interface PaymentProps {
@@ -140,8 +141,15 @@ export interface StyledTabBtnProps {
 }
 export interface OrderItemProps {
   id: number;
-  orderNum: string;
-  product: string;
+  orderNumber: string;
+  products: Product[] | string;
+}
+export interface Product {
+  productId: number;
+  name: string;
+  price: string;
+  serialNumber: string;
+  orderProductId: number;
 }
 
 export interface AddressDataProps {

@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Slider from 'react-slick';
 import { BASE_URL } from '../../api';
@@ -8,6 +9,7 @@ import { ProductCardProps } from '../../types/components';
 
 const Main: FC = () => {
   const [newProductData, setNewProductData] = useState<ProductCardProps[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchNewProductData() {
@@ -55,7 +57,12 @@ const Main: FC = () => {
         <Slider {...carouselSettings}>
           {newProductData &&
             newProductData.map(product => (
-              <div key={product.id}>
+              <div
+                key={product.id}
+                onClick={() => {
+                  navigate(`/product-detail/${product.id}`);
+                }}
+              >
                 <ProductCard
                   cardWidth="13rem"
                   cardPadding="2rem"
