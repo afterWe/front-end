@@ -11,6 +11,7 @@ const Header: FC = () => {
     if (name === '로그아웃') {
       if (token) {
         localStorage.removeItem('token');
+        alert('로그아웃 되었습니다.');
         navigate('/myPage');
       }
     }
