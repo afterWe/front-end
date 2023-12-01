@@ -43,7 +43,7 @@ const Main: FC = () => {
         />
       </section>
       <S.MainProductWrap>
-        <S.MainProductTitle>달리는 준영이에게 무한한 서포트</S.MainProductTitle>
+        <S.MainProductTitle>달리는 너에게 무한한 서포트</S.MainProductTitle>
         <S.MainProductContents>
           새로운 리액트X 폼으로 부드럽고 안정적인 지지력을 선사하는 런베이스
           인피니티런 4. <br /> 지금 바로 만나보세요.
